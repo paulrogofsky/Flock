@@ -6,6 +6,9 @@
 	    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 	    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 	    <script src="/javascripts/Toggle.js"></script>
+	    <style>
+	    	.Email >div {margin-top:50px;}
+	    </style>
  	</head>
  	<body>
  		<div>
@@ -61,24 +64,40 @@
 	 			REGISTRATION PAGE
 	 		</h4>
 	 		<div class = "Email">
-	 			<span>
-	 				<p>
-	 					If you would like to login with your email, please indicate below.
-	 				</p>
-	 				<p>
-	 					We will send you an email with a pin.
-	 				</p>
-	 			</span>
-		 		<form id = "Register" action = "/RegisterNow" method = 'post'>
-		 			<label for="Email">Email:</label>
-		 			<input type = "text" name = "Email"></input>
-		 			<label for="FirstName">First Name:</label>
-		 			<input type = "text" name = "FirstName"></input>
-		 			<label for="LastName">Last Name:</label>
-		 			<input type = "text" name = "LastName"></input>
-		 			<input type = "submit" class = "btn"></input>
-	<!-- 	 			button adder here -->
-		 		</form>
+	 			<div id = "RegisterFirst">
+		 			<span>
+		 				<p>
+		 					If you would like to register with your email, please indicate below.
+		 				</p>
+		 				<p>
+		 					We will send you an email with a pin.
+		 				</p>
+		 			</span>
+			 		<form id = "Register1" action = "/RegisterNow" method = 'post'>
+			 			<label for="Email">Email:</label>
+			 			<input type = "text" name = "Email"></input>
+			 			<label for="FirstName">First Name:</label>
+			 			<input type = "text" name = "FirstName"></input>
+			 			<label for="LastName">Last Name:</label>
+			 			<input type = "text" name = "LastName"></input>
+			 			<input type = ""
+			 			<input type = "submit" class = "btn"></input>
+		<!-- 	 			button adder here -->
+			 		</form>
+			 	</div>
+			 	<div id = "RegisterSecond">
+			 		<span>
+			 			<p>
+			 				If you already registered and received an email with your pin, please enter your email below and we will redirect you to the confirmation page.
+			 			</p>
+			 		</span>
+			 		<form id = "Register2" action = "/RegisterAgain" method = 'post'>
+			 			<label for="Email">Email:</label>
+			 			<input type = "text" name = "Email"></input>
+			 			<input type = "submit" class = "btn"></input>
+		<!-- 	 			button adder here -->
+			 		</form>		 	
+			 	</div>	
 		 	</div>
 		 </div>
  	</body>
