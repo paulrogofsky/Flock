@@ -81,8 +81,8 @@
 	 			<input type = "text" name = "size"></input>
 	 			<label for="tags">Event Tag Queries (Place a space between each): </label>
 	 			<input type = "text" name = "tags"></input>
-	 			<label for="pictures">Event Tag Queries (Place a space between each): </label>
-	 			<input type = "text" name = "tags"></input>
+	 			<label for="details">Event Details: </label>
+	 			<input type = "text" name = "details"></input>
 	 			<label for="datafile">Picture of Event:</label>
 	 			<input type="file" name="datafile" size="40">
 	 			<input type = "submit"></input>
