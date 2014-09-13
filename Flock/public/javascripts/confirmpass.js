@@ -1,5 +1,5 @@
 function validatePasswords(form) {
-    return (checkPassword(form['Password'].value) && form['Password'].value== form['ConfirmPassword'].value);
+    return (checkPassword(form.elements['Password'].value) && form.elements['Password'].value== form.elements['ConfirmPassword'].value);
 }
 
 function validatePinPasswords(form) {
@@ -7,7 +7,7 @@ function validatePinPasswords(form) {
         document.getElementById('alert').textContent = 'The passwords you put in don\'t match';
         return false;
     } 
-    if (!form['Pin'].value) {
+    if (!form.elements['Pin'].value) {
         document.getElementById('alert').textContent = 'Please put in a pin.';
         return false;
     }
@@ -35,7 +35,9 @@ function validEmailPassword(form) {
 }
 
 function confirmNames(form) {
-    return form['LastName'].value && form['FirstName'].value
+    console.log(form.elements['LastName'].value);
+    console.log(form.elements['FirstName'].value);
+    return form.elements['LastName'].value != '' && form.elements['FirstName'].value != '';
 }
 
 function validateEmailNames(form) {
@@ -49,8 +51,8 @@ function validateEmailNames(form) {
 }
 
 function confirmEmail (form) {
-    console.log(form);
-    var x = form["email"].value;
+    var x = form.elements["email"].value;
+    console.log(x);
     var atpos = x.indexOf("");
     var dotpos = x.lastIndexOf(".");
     if (atpos< 1 || dotpos<atpos+2 || dotpos+2>=x.length) {

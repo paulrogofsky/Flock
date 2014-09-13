@@ -78,7 +78,7 @@
 		 			<span id = "alert">
 		 			</span>
 			 		<form id = "Register1" action = "/RegisterNow" method = 'post' onsubmit = "validateEmailNames(this)">
-			 			<label for="Email">Email:</label>
+			 			<label for="email">Email:</label>
 			 			<input type = "text" name = "email"></input>
 			 			<label for="FirstName">First Name:</label>
 			 			<input type = "text" name = "FirstName"></input>
@@ -94,7 +94,7 @@
 			 			</p>
 			 		</span>
 			 		<form id = "Register2" action = "/RegisterAgain" method = 'post' onsubmit = "validateEmail(this)">
-			 			<label for="Email">Email:</label>
+			 			<label for="email">Email:</label>
 			 			<input type = "text" name = "email"></input>
 			 			<input type = "submit" class = "btn"></input>
 			 		</form>		 	

@@ -68,13 +68,10 @@
  			<span id = "alert">
  			</span>
  			<form id = "Login" action = "/login" method = 'post' onsubmit = "validateEmailPassword">
- 				<input type = "hidden" name = "randomHdn" value = "fansn">
- 				 	Email:
- 				</input>
- 				<input type = "text" name = "Email" >
- 				 	Password:
- 				</input>
- 				<input type = "password" name = "Password" ></input>
+ 				<label for = "email">Email:</label>
+ 				<input type = "text" name = "email" ></input>
+ 				<label for = "password">Password: </label>
+ 				<input type = "password" name = "password" ></input>
  				<input type = "submit"></input>
  			</form>
 			<div>
