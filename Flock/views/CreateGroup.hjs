@@ -1,25 +1,11 @@
 <!DOCTYPE html>
 <html>
  	<head>
- 		<title>Flock Registration </title>
+ 		<title>Flock Group Registration</title>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 		<link rel="stylesheet" href="/stylesheets/index.css">
  	</head>
  	<body>
- 		<h4>
- 			REGISTRATION PAGE
- 		</h4>
- 		<div class = "Facebook">
- 			<span>
- 				If you would like to login with facebook, please type in your credentials below
- 			</span>
- 			<form id = "Facebook" action = "/FacebookLogin" method = "post">
- 	 			<label for="Email">Email:</label>
-	 			<input type = "text" name = "Email"></input>
- 	 			<label for="Password">Password:</label>
-	 			<input type = "password" name = "Password"></input>	 			
- 			</form>
- 		</div>
  		<div class = "Email">
  			<span>
  				<p>
@@ -29,13 +15,19 @@
  					We will send you an email with a pin.
  				</p>
  			</span>
-	 		<form id = "Register" action = "/RegisterNow" method = 'post'>
-	 			<label for="Email">Email:</label>
-	 			<input type = "text" name = "Email"></input>
-	 			<label for="First Name">First Name:</label>
-	 			<input type = "text" name = "First Name"></input>
-	 			<label for="Last Name">Last Name:</label>
-	 			<input type = "text" name = "First Name"></input>
+	 		<form id = "CreateGroup" action = "/CreateGroup" method = 'post'>
+	 			<label for="Group Name">Group Name:</label>
+	 			<input type = "text" name = "Group Name"></input>
+	 			<label for="Event Name">Event Name:</label>
+	 			<input type = "text" name = "Event Name"></input>
+	 			<label for="start">Event Start Time: </label>
+	 			<input type = "text" name = "start"></input>
+	 			<label for="end">Event Start End: </label>
+	 			<input type = "text" name = "end"></input>
+	 			<label for="location">Event Location: </label>
+	 			<input type = "text" name = "location"></input>
+	 			<label for="size">Group Size: </label>
+	 			<input type = "text" name = "size"></input>
 	 			<input type = "submit"></input>
 <!-- 	 			button adder here -->
 	 		</form>
