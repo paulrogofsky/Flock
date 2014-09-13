@@ -40,9 +40,19 @@ router.get('/facebook', function(req, res) {
   });
 });
 
+var options = {
+    timeout:  3000
+  , pool:     { maxSockets:  Infinity }
+  , headers:  { connection:  "keep-alive" }
+};
+
+graph.setOptions(options);
+
 // user gets sent here after being authorized
 router.get('/Home', function(req, res) {
-  res.send('Logged In');
+  graph.get('joshkarnofsky/picture', function (err, data) {
+  	console.log(data);
+  });
 });
 
 module.exports = router;
