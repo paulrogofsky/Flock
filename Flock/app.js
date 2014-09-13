@@ -16,6 +16,7 @@ var server = app.listen(app.get('port'), function() {
 });
 
 var mongoose = require('mongoose');
+var Facebook = require('facebook-node-sdk');
 
 mongoose.connect('mongodb://admin:flockbro@ds035310.mongolab.com:35310/flockdb');
 
@@ -48,6 +49,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(Facebook.middleware({ appId: '722772554464882', secret: 'c7be44048e6a4571b8804ade0bac16da' }));
 
 app.use('/', routes);
 
