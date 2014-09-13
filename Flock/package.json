@@ -1,7 +1,9 @@
 {
   "name": "Flock",
   "version": "0.0.1",
-  "private": true,
+  "scripts": {
+    "start": "node app.js"
+  },
   "dependencies": {
     "body-parser": "~1.6.6",
     "consolidate": "^0.10.0",
