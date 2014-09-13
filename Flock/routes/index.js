@@ -9,24 +9,20 @@ router.get('/', function(req, res) {
   res.render('index');
 });
 
-router.get('/login', function(req, res) {
+router.get('/Login', function(req, res) {
 	res.render('login');
 });
 
-router.get('/test', function(req,res) {
+router.get('/Test', function(req,res) {
 	req.facebook.api('/me', function(err, data) {
   	console.log(data);
 	});
 });
 
-router.get('/facebook', Facebook.loginRequired(), function(req, res) {
-  req.facebook.api('/me', function(err, user) {
-    console.log('Hello, ' + user.name + '!');
-  });
-});
-
-router.get('/register', function(req, res) {
+router.get('/Register', function(req, res) {
 	res.render('Register')
 });
+
+router.get('/Person/')
 
 module.exports = router;

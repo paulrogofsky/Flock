@@ -17,7 +17,6 @@ var server = app.listen(app.get('port'), function() {
 });
 
 var mongoose = require('mongoose');
-
 mongoose.connect('mongodb://admin:flockbro@ds035310.mongolab.com:35310/flockdb');
 
 mongoose.model('person', {
@@ -26,7 +25,8 @@ mongoose.model('person', {
     password: String,
     age: Number,
     events_started: [Number],
-    events_joined: [Number]
+    events_joined: [Number],
+    facebook: Number
 });
 
 mongoose.model('event', {

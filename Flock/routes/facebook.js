@@ -1,5 +1,6 @@
 var express = require('express');
 var session = require('session');
+var mongoose = require('mongoose');
 var router = express.Router();
 
 var graph = require('fbgraph');
@@ -7,8 +8,8 @@ var graph = require('fbgraph');
 var conf = {
     client_id:      '722772554464882',
     client_secret:  'c7be44048e6a4571b8804ade0bac16da',
-    scope:          'email',
-    redirect_uri:   'http://localhost:3000/facebook'
+    scope:          'email, user_friends',
+    redirect_uri:   'http://localhost:3000/Facebook'
 };
 
 router.get('/facebook', function(req, res) {
@@ -37,15 +38,27 @@ router.get('/facebook', function(req, res) {
       "client_secret":  conf.client_secret,
       "code":           req.query.code
   }, function (err, facebookRes) {
+  	graph.get('/me', function(err, data) {
+  		var Person = mongoose.model('person');
+  		fb_person = new Person();
+  		fb_person.first_name = data.first_name;
+  		fb_person.last_name = data.last_name;
+  		fb_person.facebook = data.id;
+  		fb_person.save(function (err, saved) {
+  			if (!err) {
+  				console.log('Saved!');
+  			}
+  		})
+  	});
     res.redirect('/Home');
   });
 });
 
 // user gets sent here after being authorized
 router.get('/Home', function(req, res) {
-  graph.get('/me', function (err, data) {
-  	res.send("Hi " + data.first_name + " " + data.last_name);
-  });
+	graph.get('/me', function (err, data) {
+	 	res.send("Hi " + data.first_name + " " + data.last_name);
+	});
 });
 
 module.exports = router;
