@@ -79,7 +79,7 @@
 		 			</span>
 			 		<form id = "Register1" action = "/RegisterNow" method = 'post' onsubmit = "validateEmailNames(this)">
 			 			<label for="Email">Email:</label>
-			 			<input type = "text" name = "Email"></input>
+			 			<input type = "text" name = "email"></input>
 			 			<label for="FirstName">First Name:</label>
 			 			<input type = "text" name = "FirstName"></input>
 			 			<label for="LastName">Last Name:</label>

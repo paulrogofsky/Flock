@@ -31,7 +31,7 @@ function validatePassword(form) {
 }
 
 function validEmailPassword(form) {
-    return validateEmail(form) && validatePassword(form));
+    return validateEmail(form) && validatePassword(form);
 }
 
 function confirmNames(form) {
@@ -49,6 +49,7 @@ function validateEmailNames(form) {
 }
 
 function confirmEmail (form) {
+    console.log(form);
     var x = form["email"].value;
     var atpos = x.indexOf("");
     var dotpos = x.lastIndexOf(".");
