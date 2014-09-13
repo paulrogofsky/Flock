@@ -1,4 +1,5 @@
 var express = require('express');
+var session = require('session');
 var router = express.Router();
 
 var graph = require('fbgraph');
@@ -6,7 +7,7 @@ var graph = require('fbgraph');
 var conf = {
     client_id:      '722772554464882',
     client_secret:  'c7be44048e6a4571b8804ade0bac16da',
-    scope:          'public_profile, user_friends',
+    scope:          'email',
     redirect_uri:   'http://localhost:3000/facebook'
 };
 
@@ -40,18 +41,10 @@ router.get('/facebook', function(req, res) {
   });
 });
 
-var options = {
-    timeout:  3000
-  , pool:     { maxSockets:  Infinity }
-  , headers:  { connection:  "keep-alive" }
-};
-
-graph.setOptions(options);
-
 // user gets sent here after being authorized
 router.get('/Home', function(req, res) {
-  graph.get('joshkarnofsky/picture', function (err, data) {
-  	console.log(data);
+  graph.get('/me', function (err, data) {
+  	res.send("Hi " + data.first_name + " " + data.last_name);
   });
 });
 
