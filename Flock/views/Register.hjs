@@ -9,17 +9,6 @@
  		<h4>
  			REGISTRATION PAGE
  		</h4>
- 		<div class = "Facebook">
- 			<span>
- 				If you would like to login with facebook, please type in your credentials below
- 			</span>
- 			<form id = "Facebook" action = "/FacebookLogin" method = "post">
- 	 			<label for="Email">Email:</label>
-	 			<input type = "text" name = "Email"></input>
- 	 			<label for="Password">Password:</label>
-	 			<input type = "password" name = "Password"></input>	 			
- 			</form>
- 		</div>
  		<div class = "Email">
  			<span>
  				<p>
@@ -32,18 +21,18 @@
 	 		<form id = "Register" action = "/RegisterNow" method = 'post'>
 	 			<label for="Email">Email:</label>
 	 			<input type = "text" name = "Email"></input>
-	 			<label for="First Name">First Name:</label>
-	 			<input type = "text" name = "First Name"></input>
-	 			<label for="Last Name">Last Name:</label>
-	 			<input type = "text" name = "First Name"></input>
-	 			<input type = "submit"></input>
+	 			<label for="FirstName">First Name:</label>
+	 			<input type = "text" name = "FirstName"></input>
+	 			<label for="LastName">Last Name:</label>
+	 			<input type = "text" name = "LastName"></input>
+	 			<input type = "submit" class = "btn"></input>
 <!-- 	 			button adder here -->
 	 		</form>
 	 	</div>
 		<div class = "navbar">
 			<div class ="navbar-inner">
 				<ul class="nav">
-					<li class="active"><a href="#">Home</a></li>
+					<li class="active"><a href="/">Home</a></li>
 					<li class="active"><a href="/Founders">Founders</a></li>
 					<li class="active">
 						<form action = "/SearchEvents" method = "post" id = "SearchEvents">

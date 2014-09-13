@@ -23,6 +23,10 @@ router.get('/Register', function(req, res) {
 	res.render('Register')
 });
 
+router.get('/navbar', function(req,res){
+	res.render('navbar')
+});
+
 router.get('/Person/')
 
 module.exports = router;

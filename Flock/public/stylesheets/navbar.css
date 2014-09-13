@@ -1,0 +1,9 @@
+#rankSubMenu {
+     display: none; 
+     position: absolute; 
+     bottom: 10px;
+}
+
+nav {font-size:16pt;}
+
+#Title {font-size:26pt;}

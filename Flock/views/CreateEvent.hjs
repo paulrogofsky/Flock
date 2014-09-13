@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+ 	<head>
+ 		<title>Flock Event Registration </title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+		<link rel="stylesheet" href="/stylesheets/index.css">
+ 	</head>
+ 	<body>
+ 		<h4>
+ 			EVENT REGISTRATION PAGE
+ 		</h4>
+ 		<div class = "Email">
+	 		<form id = "CreateEvent" action = "/CreateEvent" method = 'post'>
+	 			<label for="Group Name">Group Name:</label>
+	 			<input type = "text" name = "Group Name"></input>
+	 			<label for="Event Name">Event Name:</label>
+	 			<input type = "text" name = "Event Name"></input>
+	 			<label for="start">Event Start Time: </label>
+	 			<input type = "text" name = "start"></input>
+	 			<label for="end">Event Start End: </label>
+	 			<input type = "text" name = "end"></input>
+	 			<label for="location">Event Location: </label>
+	 			<input type = "text" name = "location"></input>
+	 			<label for="size">Group Size: </label>
+	 			<input type = "text" name = "size"></input>
+	 			<label for="size">Group Size: </label>
+	 			<input type = "text" name = "size"></input>
+	 			<input type = "submit"></input>
+<!-- 	 			button adder here -->
+	 		</form>
+	 	</div>
+		<div class = "navbar">
+			<div class ="navbar-inner">
+				<ul class="nav">
+					<li class="active"><a href="#">Home</a></li>
+					<li class="active"><a href="/Founders">Founders</a></li>
+					<li class="active">
+						<form action = "/SearchEvents" method = "post" id = "SearchEvents">
+							<a href="/Search">Search Events </a>
+							<input type = "text" name = "query" id = "query" class = "span2">
+							</input>
+							<button type = "submit" class = "btn"> Submit</button>
+						</form>
+					</li>
+					<li class="active">
+						<form action = "/SearchPeople" method = "post" id = "SearchPeople">
+							<a href="/People">Search People</a>
+							<input type = "text" name = "query" id = "query" class = "span2">
+							</input>
+							<button type = "submit" class = "btn"> Submit</button>
+						</form>
+					</li>
+					<li class="active">
+						<form class = "navbar-search pull-left" action = "/SearchLocation" method = "post" id = "SearchLocation">
+							<a href="/Search">Search Near You</a>
+							<input type = "text" name = "query" id = "query" class = "span2">
+							</input>
+							<button type = "submit" class = "btn"> Submit</button>
+						</form>
+					</li>
+					<li class="active"><a href="/Login">Login</a></li>
+				</ul>
+			</div>
+		</div>
+ 	</body>
+ </html>

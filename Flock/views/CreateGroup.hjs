@@ -28,6 +28,8 @@
 	 			<input type = "text" name = "location"></input>
 	 			<label for="size">Group Size: </label>
 	 			<input type = "text" name = "size"></input>
+	 			<label for="size">Group Size: </label>
+	 			<input type = "text" name = "size"></input>
 	 			<input type = "submit"></input>
 <!-- 	 			button adder here -->
 	 		</form>
