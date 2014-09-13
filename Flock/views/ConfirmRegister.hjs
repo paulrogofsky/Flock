@@ -6,6 +6,7 @@
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 		<script src="/javascripts/Toggle.js"></script>
+	    <script src="/confirmpass.js"></script>
 	</head>
 	<body>
  		<div>
@@ -60,6 +61,8 @@
 	 		<h4>
 	 			CONFIRM REGISTRATION
 	 		</h4>
+ 			<span id = "alert">
+ 			</span>
 	 		<div class = "Email">
 	 			<span>
 	 				<p>
@@ -69,14 +72,14 @@
 	 					Please check your email, and fill out the information below to finish registration.
 	 				</p>
 	 			</span>
-		 		<form id = "ConfirmRegister" action = "/ConfirmRegister" method = 'post'>
+		 		<form name = "ConfirmRegister" action = "/ConfirmRegister" method = 'post' onsubmit = "return validatePinPasswords(this)">
 		 			<input type = "hidden" name = "Email" value = "{{Email}}"></input>
 		 			<label for="FirstName">Confirm Pin:</label>
-		 			<input type = "text" name = "Password"></input>
+		 			<input type = "text" name = "Pin"></input>
 		 			<label for="Password">Password:</label>
-		 			<input type = "password" name = "Password" id = "Password"></input>
+		 			<input type = "password" name = "Password"></input>
 		 			<label for="Confirm Password">Confirm Password:</label>
-		 			<input type = "password" name = "ConfirmPassword" id = "Password"></input>
+		 			<input type = "password" name = "ConfirmPassword" disabled="disabled"></input>
 		 			<input type = "submit" class = "btn"></input>
 	<!-- 	 			button adder here -->
 		 		</form>

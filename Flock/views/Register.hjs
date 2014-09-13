@@ -6,8 +6,9 @@
 	    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 	    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 	    <script src="/javascripts/Toggle.js"></script>
+	    <script src="/confirmpass.js"></script>
 	    <style>
-	    	.Email >div {margin-top:50px;}
+	    	.Email > div {margin-top:50px;}
 	    </style>
  	</head>
  	<body>
@@ -27,7 +28,7 @@
 		        <!-- Collect the nav links, forms, and other content for toggling -->
 		        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 		          <ul class="nav navbar-nav" id = "NavItems">
-		            <li class="active"><a href="/">Home</a></li>
+		            <li><a href="/">Home</a></li>
 		            <li><a href="/Founders">Founders</a></li>
 		            <li><a href = "/AllGroups">Groups</a></li>
 		            <li><a href = "/AllEvents">Event Feed</a></li>
@@ -73,16 +74,16 @@
 		 					We will send you an email with a pin.
 		 				</p>
 		 			</span>
-			 		<form id = "Register1" action = "/RegisterNow" method = 'post'>
+		 			<span id = "alert">
+		 			</span>
+			 		<form id = "Register1" action = "/RegisterNow" method = 'post' onsubmit = "validateEmailNames(this)">
 			 			<label for="Email">Email:</label>
 			 			<input type = "text" name = "Email"></input>
 			 			<label for="FirstName">First Name:</label>
 			 			<input type = "text" name = "FirstName"></input>
 			 			<label for="LastName">Last Name:</label>
 			 			<input type = "text" name = "LastName"></input>
-			 			<input type = ""
 			 			<input type = "submit" class = "btn"></input>
-		<!-- 	 			button adder here -->
 			 		</form>
 			 	</div>
 			 	<div id = "RegisterSecond">
@@ -91,11 +92,10 @@
 			 				If you already registered and received an email with your pin, please enter your email below and we will redirect you to the confirmation page.
 			 			</p>
 			 		</span>
-			 		<form id = "Register2" action = "/RegisterAgain" method = 'post'>
+			 		<form id = "Register2" action = "/RegisterAgain" method = 'post' onsubmit = "validateEmail(this)">
 			 			<label for="Email">Email:</label>
-			 			<input type = "text" name = "Email"></input>
+			 			<input type = "text" name = "email"></input>
 			 			<input type = "submit" class = "btn"></input>
-		<!-- 	 			button adder here -->
 			 		</form>		 	
 			 	</div>	
 		 	</div>
