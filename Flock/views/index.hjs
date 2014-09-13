@@ -6,15 +6,23 @@
 		<link rel="stylesheet" href="/stylesheets/index.css">
 	</head>
 	<body>
-		<div class = "LeftPane">
-			<ul class="nav nav-list">
-				<li class="active"><a href="#">Home</a></li>
-				<li class="active"><a href="/Founds">Founders</a></li>
-				<li class="active"><a href="/Events">Events</a></li>
-				<li class="active"><a href="/People">People</a></li>
-				<li class="active"><a href="/Search">Search</a></li>
-				<li class="active"><a href="/Login">Login</a></li>
-			</ul>
+		<div class = "navbar">
+			<div class ="navbar-inner">
+				<ul class="nav">
+					<li class="active"><a href="#">Home</a></li>
+					<li class="active"><a href="/Founders">Founders</a></li>
+					<li class="active"><a href="/Events">Events</a></li>
+					<li class="active"><a href="/People">People</a></li>
+					<li class="active">
+						<form action = "/SearchEvent" method = "post" id = "search">
+							<a href="/Search">Search</a>
+							<input type = "text" name = "query" id = "query">
+							</input>
+						</form>
+					</li>
+					<li class="active"><a href="/Login">Login</a></li>
+				</ul>
+			</div>
 		</div>
 		<div class = "RightPane">
 			<h4>

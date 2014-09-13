@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
  	<head>
- 		<title>Josh and Paul's Registration Page</title>
- 		<link rel = 'stylesheet' href = '/styles/home.css' />
+ 		<title>Flock Registration Page</title>
+ 		<link rel = 'stylesheet' href = '/stylesheets/home.css' />
  	</head>
  	<body>
  		<h4>

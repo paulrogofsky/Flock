@@ -1,7 +1,7 @@
 body {font-size:28pt;font-family:Lucida Sans Unicode, Lucida Sans LeftPane ;}
 
-body div {display:inline-block;}
+#search {display:inline;}
 
-.active a {height:100px;background-color:orange; border-style:solid;border-color:white;border-width:4px;}
+.active {height:100px;background-color:orange; border-style:solid;border-color:white;border-width:4px;}
 
-.RightPane {float:top;position:relative;text-align:center;}
+.RightPane {text-align:center;}
