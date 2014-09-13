@@ -36,9 +36,40 @@ router.post('/RegisterNow', function(req, res, next) {
 
 	  var pin = makeid();
 
-	  var mailOptions = {
+  	var Person = mongoose.model('person');
+		var email_person = new Person();
+	  		email_person.first_name = req.body.FirstName;
+	  		email_person.last_name = req.body.LastName;
+	  		email_person.email = req.body.Email;
+	  		email_person.pin = pin;
+
+		Person.find( { email : req.body.Email } , function (err, user) {
+			if (user.length == 0) { 
+	  		email_person.save(function (err, saved) {
+	  			if (!err) {
+	  				console.log('Saved!');
+	  			} else {
+	  				console.log('Error!');
+	  			}
+	  			emailpin(pin, req.body.Email, res);
+				});
+			} else {
+				if (!user[0].password) {
+					console.log(user[0].pin);
+					emailpin(user[0].pin, req.body.Email, res);
+				} else {
+					res.redirect('/Login');
+				}
+			}
+		});
+	}
+});
+
+function emailpin(pin, email, res)
+{
+	var mailOptions = {
 	    from: 'The Flock Team <theflockteam@gmail.com>',
-	    to: req.body.Email,
+	    to: email,
 	    subject: 'Welcome to Flock!',
 	    text: 'Welcome to Flock! A new way to enjoy the events you love. Please confirm your email with the following key: ' + pin
 	  };
@@ -48,11 +79,10 @@ router.post('/RegisterNow', function(req, res, next) {
 	      next(err);
 	    } else {
 	      console.log('Message sent successfully!');
-				res.render('ConfirmRegister', { Email : req.body.Email });
+				res.render('ConfirmRegister', { Email : email });
 	    }
 	  });
-	}
-});
+}
 
 function makeid()
 {
