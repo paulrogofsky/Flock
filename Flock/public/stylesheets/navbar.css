@@ -1,5 +1,7 @@
 nav {font-size:16pt;}
 
-#FLOCK {font-size:26pt;}
+#FLOCK {font-size:26pt;
+min-height: 95px;
+}
 
 #NavItems li a {padding-right:50px;}
