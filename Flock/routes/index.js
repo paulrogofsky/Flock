@@ -12,11 +12,14 @@ router.get('/login', function(req, res) {
 	res.render('login');
 });
 
-router.get('/facebook', Facebook.loginRequired(), function (req, res) {
-  req.facebook.api('/me', function(err, user) {
-    res.writeHead(200, {'Content-Type': 'text/plain'});
-    res.end('Hello, ' + user.name + '!');
+router.get('/facebook', Facebook.loginRequired(), function(req, res) {
+  req.FB.api('/me', function(err, user) {
+    res.send('Hello, ' + user.name + '!');
   });
+});
+
+router.get('/register', function(req, res) {
+	res.render('Register')
 });
 
 module.exports = router;
