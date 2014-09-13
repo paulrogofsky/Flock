@@ -1,9 +1,11 @@
 #rankSubMenu {
      display: none; 
      position: absolute; 
-     bottom: 10px;
+     bottom: 7px;
 }
 
 nav {font-size:16pt;}
 
-#Title {font-size:26pt;}
+#FLOCK {font-size:26pt;}
+
+#NavItems li {margin-right:50px;}

@@ -4,8 +4,10 @@
 		<title>Flock Home Page</title>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 		<link rel="stylesheet" href="/stylesheets/index.css">
+		<link rel="stylesheet" href="/stylesheets/iframe.css">
 	</head>
 	<body>
+		<iframe src="navbar"></iframe>
 		<div class = "RightPane">
 			<h3>
 				Welcome to Flock
@@ -16,38 +18,5 @@
 				squad deep
 			</div>
 		</div>	
-		<div class = "navbar">
-			<div class ="navbar-inner">
-				<ul class="nav">
-					<li class="active"><a href="#">Home</a></li>
-					<li class="active"><a href="/Founders">Founders</a></li>
-					<li class="active">
-						<form action = "/SearchEvents" method = "post" id = "SearchEvents">
-							<a href="/Search">Search Events </a>
-							<input type = "text" name = "query" id = "query" class = "span2">
-							</input>
-							<button type = "submit" class = "btn"> Submit</button>
-						</form>
-					</li>
-					<li class="active">
-						<form action = "/SearchPeople" method = "post" id = "SearchPeople">
-							<a href="/People">Search People</a>
-							<input type = "text" name = "query" id = "query" class = "span2">
-							</input>
-							<button type = "submit" class = "btn"> Submit</button>
-						</form>
-					</li>
-					<li class="active">
-						<form class = "navbar-search pull-left" action = "/SearchLocation" method = "post" id = "SearchLocation">
-							<a href="/Search">Search Near You</a>
-							<input type = "text" name = "query" id = "query" class = "span2">
-							</input>
-							<button type = "submit" class = "btn"> Submit</button>
-						</form>
-					</li>
-					<li class="active"><a href="/Login">Login</a></li>
-				</ul>
-			</div>
-		</div>
 	</body>
 </html>
