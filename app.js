@@ -5,7 +5,8 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
-var facebook = require('./routes/facebook'); 
+var facebook = require('./routes/facebook');
+var events = require('./routes/events');
 var routes = require('./routes/index');
 var app = express();
 
@@ -52,6 +53,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use('/', events);
 app.use('/', facebook);
 app.use('/', routes);
 
