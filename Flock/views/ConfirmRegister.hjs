@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html>
- 	<head>
-		<title>Flock Login</title>
-	    <link rel="stylesheet" href="/stylesheets/navbar.css">
-	    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-	    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-	    <script src="/javascripts/Toggle.js"></script>
- 	</head>
- 	<body>
+	<head>
+		<title>Flock Event Confirm Registration</title>
+		<link rel="stylesheet" href="/stylesheets/navbar.css">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+		<script src="/javascripts/Toggle.js"></script>
+	</head>
+	<body>
  		<div>
- 			<nav class="navbar navbar-default" role="navigation">
+		    <nav class="navbar navbar-default" role="navigation">
 		      <div class="container-fluid">
 		        <!-- Brand and toggle get grouped for better mobile display -->
 		        <div class="navbar-header">
@@ -24,13 +24,13 @@
 		        <!-- Collect the nav links, forms, and other content for toggling -->
 		        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 		          <ul class="nav navbar-nav" id = "NavItems">
-		            <li ><a href="/">Home</a></li>
+		            <li class="active"><a href="/">Home</a></li>
 		            <li><a href="/Founders">Founders</a></li>
 		            <li><a href = "/AllGroups">Groups</a></li>
 		            <li><a href = "/AllEvents">Event Feed</a></li>
 		            <li><a href = "/AllPeople">All People</a></li>
-		            <li class="active"><a href = "/Login">Login</a></li>
-		            <li><a href = "/Register">Register</a></li>
+		            <li><a href = "/Login">Login</a></li>
+		            <li class="active"><a href = "/Register">Register</a></li>
 		          </ul>
 		          <form class="navbar-form navbar-left" role="search">
 		            <div class="form-group">
@@ -56,38 +56,31 @@
 		      </div><!-- /.container-fluid -->
 		    </nav>
  		</div>
- 		<div class = "Content">
-	  		<h4>
-	 			Login Page
+ 		<div>
+	 		<h4>
+	 			CONFIRM REGISTRATION
 	 		</h4>
- 			<div>
- 				If you already have an account, you can login below.
- 			</div>
- 			<form id = "Login" action = "/login" method = 'post'>
- 				<input type = "hidden" name = "randomHdn" value = "fansn">
- 				 	Username:
- 				</input>
- 				<input type = "text" name = "username" >
- 				 	Password:
- 				</input>
- 				<input type = "password" name = "password" ></input>
- 				<input type = "submit"></input>
- 			</form>
-			<div>
- 				If you would like to make an account, click 
- 				<a href = "/Register">here</a>
- 				.
- 			</div>
- 			<div>
- 				If you would like to just continue on without logging in, click
- 				<a href = "/Events">here</a>
- 				.
- 			</div>
- 			<div>
- 				If you would like to login with Facebook, click
- 				<a href = "/Facebook">here</a>
- 				.
- 			</div>
- 		</div>
- 	</body>
- </html>
+	 		<div class = "Email">
+	 			<span>
+	 				<p>
+	 					We just sent an email to {{Email}}. You can find your pin there.
+	 				</p>
+	 				<p>
+	 					Please check your email, and fill out the information below to finish registration.
+	 				</p>
+	 			</span>
+		 		<form id = "ConfirmRegister" action = "/ConfirmRegister" method = 'post'>
+		 			<input type = "hidden" name = "Email" value = "{{Email}}"></input>
+		 			<label for="FirstName">Confirm Pin:</label>
+		 			<input type = "text" name = "Password"></input>
+		 			<label for="Password">Password:</label>
+		 			<input type = "password" name = "Password" id = "Password"></input>
+		 			<label for="Confirm Password">Confirm Password:</label>
+		 			<input type = "password" name = "ConfirmPassword" id = "Password"></input>
+		 			<input type = "submit" class = "btn"></input>
+	<!-- 	 			button adder here -->
+		 		</form>
+		 	</div>
+		</div>
+	</body>
+</html>
