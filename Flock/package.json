@@ -1,7 +1,7 @@
 {
   "name": "Flock",
   "version": "0.0.0",
-  "private": true,
+  "private": false,
   "dependencies": {
     "body-parser": "~1.6.6",
     "consolidate": "^0.10.0",
