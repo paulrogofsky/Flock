@@ -1,66 +1,93 @@
 <!DOCTYPE html>
 <html>
  	<head>
- 		<title>Flock Event Registration </title>
+		<title>Flock Event Creation</title>
+		<link rel="stylesheet" href="/stylesheets/navbar.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-		<link rel="stylesheet" href="/stylesheets/index.css">
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+		<script src="/javascripts/Toggle.js"></script>
+	    <script src="/javascripts/confirmpass.js"></script>
+	    <style>
+	    	form label {display:block;margin-left:15px;}
+	    	form input {display:block;margin-left:15px;margin-bottom:15px;}
+	    </style>
  	</head>
  	<body>
+  		<div>
+		    <nav class="navbar navbar-default" role="navigation">
+		      <div class="container-fluid">
+		        <!-- Brand and toggle get grouped for better mobile display -->
+		        <div class="navbar-header">
+		          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+		            <span class="sr-only">Toggle navigation</span>
+		            <span class="icon-bar"></span>
+		            <span class="icon-bar"></span>
+		            <span class="icon-bar"></span>
+		          </button>
+		          <a id = "FLOCK" class="navbar-brand" href="/#" ><img src="/images/flock0.png" width = "150"></img></a>
+		        </div>
+		        <!-- Collect the nav links, forms, and other content for toggling -->
+		        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+		          <ul class="nav navbar-nav" id = "NavItems">
+		            <li><a href="/">Home</a></li>
+		            <li><a href="/Founders">Founders</a></li>
+		            <li><a href = "/AllGroups">Groups</a></li>
+		            <li><a href = "/AllEvents">Event Feed</a></li>
+		            <li><a href = "/AllPeople">All People</a></li>
+		            <li><a href = "/Login">Login</a></li>
+		            <li class="active"><a href = "/Register">Register</a></li>
+		          </ul>
+		          <form class="navbar-form navbar-left" role="search">
+		            <div class="form-group">
+		              <input type="text" class="form-control" placeholder="Search">
+		            </div>
+		            <button type="submit" class="btn btn-default">Submit</button>
+		          </form>
+		          <ul class="nav navbar-nav navbar-right" >
+		            <li class="dropdown">
+		              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown 
+		                <span class="caret"></span>
+		              </a>
+		              <ul class="dropdown-menu" role="menu" id = "rankSubMenu">
+		                <li><a href="/Bro">Next</a></li>
+		                <li><a href="/HO">Another action</a></li>
+		                <li><a href="#">Something else here</a></li>
+		                <li class="divider"></li>
+		                <li><a href="#">Separated link</a></li>
+		              </ul>
+		            </li>
+		          </ul>
+		        </div><!-- /.navbar-collapse -->
+		      </div><!-- /.container-fluid -->
+		    </nav>
+ 		</div>
  		<h4>
  			EVENT REGISTRATION PAGE
  		</h4>
  		<div class = "Email">
 	 		<form id = "CreateEvent" action = "/CreateEvent" method = 'post'>
-	 			<label for="Group Name">Group Name:</label>
-	 			<input type = "text" name = "Group Name"></input>
-	 			<label for="Event Name">Event Name:</label>
-	 			<input type = "text" name = "Event Name"></input>
+	 			<label for="EventName">Event Name:</label>
+	 			<input type = "text" name = "EventName"></input>
+	 			<label for="Event Type">Event Name:</label>
+	 			<input type = "text" name = "EventType"></input>
 	 			<label for="start">Event Start Time: </label>
 	 			<input type = "text" name = "start"></input>
 	 			<label for="end">Event Start End: </label>
 	 			<input type = "text" name = "end"></input>
 	 			<label for="location">Event Location: </label>
 	 			<input type = "text" name = "location"></input>
-	 			<label for="size">Group Size: </label>
+	 			<label for="size">Event Expected Attendance: </label>
 	 			<input type = "text" name = "size"></input>
-	 			<label for="size">Group Size: </label>
-	 			<input type = "text" name = "size"></input>
+	 			<label for="tags">Event Tag Queries (Place a space between each): </label>
+	 			<input type = "text" name = "tags"></input>
+	 			<label for="details">Event Details: </label>
+	 			<input type = "text" name = "details"></input>
+	 			<label for="datafile">Picture of Event:</label>
+	 			<input type="file" name="datafile" size="40">
 	 			<input type = "submit"></input>
 <!-- 	 			button adder here -->
 	 		</form>
 	 	</div>
-		<div class = "navbar">
-			<div class ="navbar-inner">
-				<ul class="nav">
-					<li class="active"><a href="#">Home</a></li>
-					<li class="active"><a href="/Founders">Founders</a></li>
-					<li class="active">
-						<form action = "/SearchEvents" method = "post" id = "SearchEvents">
-							<a href="/Search">Search Events </a>
-							<input type = "text" name = "query" id = "query" class = "span2">
-							</input>
-							<button type = "submit" class = "btn"> Submit</button>
-						</form>
-					</li>
-					<li class="active">
-						<form action = "/SearchPeople" method = "post" id = "SearchPeople">
-							<a href="/People">Search People</a>
-							<input type = "text" name = "query" id = "query" class = "span2">
-							</input>
-							<button type = "submit" class = "btn"> Submit</button>
-						</form>
-					</li>
-					<li class="active">
-						<form class = "navbar-search pull-left" action = "/SearchLocation" method = "post" id = "SearchLocation">
-							<a href="/Search">Search Near You</a>
-							<input type = "text" name = "query" id = "query" class = "span2">
-							</input>
-							<button type = "submit" class = "btn"> Submit</button>
-						</form>
-					</li>
-					<li class="active"><a href="/Login">Login</a></li>
-				</ul>
-			</div>
-		</div>
  	</body>
  </html>
