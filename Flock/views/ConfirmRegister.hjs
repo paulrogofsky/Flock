@@ -79,7 +79,7 @@
 		 			<label for="Password">Password:</label>
 		 			<input type = "password" name = "Password"></input>
 		 			<label for="Confirm Password">Confirm Password:</label>
-		 			<input type = "password" name = "ConfirmPassword" disabled="disabled"></input>
+		 			<input type = "password" name = "ConfirmPassword"></input>
 		 			<input type = "submit" class = "btn"></input>
 	<!-- 	 			button adder here -->
 		 		</form>
