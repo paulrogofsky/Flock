@@ -14,29 +14,7 @@
 	    </style>
  	</head>
  	<body>
- 		<div>
-	 		<form id = "CreateGroup" action = "/CreateGroup" method = 'post'>
-	 			<label for="Group Name">Group Name:</label>
-	 			<input type = "text" name = "Group Name"></input>
-	 			<label for="Event Name">Event Name:</label>
-	 			<input type = "text" name = "Event Name"></input>
-	 			<label for="start">Event Start Time: </label>
-	 			<input type = "text" name = "start"></input>
-	 			<label for="end">Event Start End: </label>
-	 			<input type = "text" name = "end"></input>
-	 			<label for="location">Event Location: </label>
-	 			<input type = "text" name = "location"></input>
-	 			<label for="size">Group Size: </label>
-	 			<input type = "text" name = "size"></input>
-	 			<label for="size">Group Size: </label>
-	 			<input type = "text" name = "size"></input>
-	 			<label for = "members"> Member names (Please put commas between them):</label>
-	 			<input type = "text" name = "members"></input>
-	 			<input type = "submit"></input>
-<!-- 	 			button adder here -->
-	 		</form>
-	 	</div>
-  		<div>
+   		<div>
 		    <nav class="navbar navbar-default" role="navigation">
 		      <div class="container-fluid">
 		        <!-- Brand and toggle get grouped for better mobile display -->
@@ -84,5 +62,36 @@
 		      </div><!-- /.container-fluid -->
 		    </nav>
  		</div>
+ 		<div>
+	 		<form id = "CreateGroup" action = "/CreateGroup" method = 'post'>
+	 			<label for="Group Name">Group Name:</label>
+	 			<input type = "text" name = "Group Name"></input>
+	 			<label for="Event Name">Event Name:</label>
+	 			<input type = "text" name = "Event Name"></input>
+	 			<label for="start">Event Start Time: </label>
+	 			<input type = "text" name = "start"></input>
+	 			<label for="end">Event Start End: </label>
+	 			<input type = "text" name = "end"></input>
+	 			<label for="location">Event Location: </label>
+	 			<input type = "text" name = "location"></input>
+	 			<label for="size">Group Size: </label>
+	 			<input type = "text" name = "size"></input>
+	 			<label for="lookingfor">How many people are you looking for?: </label>
+	 			<input type = "text" name = "lookingfor"></input>
+	 			<label for = "members"> Member names (Please put commas between them):</label>
+	 			<input type = "text" name = "members"></input>
+	 			<span>
+	 				<p>
+	 					Contact Information
+	 				</p>
+	 				<label for = "Phone">Phone:</label>
+	 				<input type = "text" name = "phone"></input>
+	 				<label for = "email">Email:</label>
+	 				<input type = "text" name = "email"></input>
+	 			</span>
+	 			<input type = "submit"></input>
+<!-- 	 			button adder here -->
+	 		</form>
+	 	</div>
  	</body>
  </html>

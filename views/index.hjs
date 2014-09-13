@@ -7,6 +7,7 @@
 	    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 	    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 	    <script src="/javascripts/Toggle.js"></script>
+	    <link rel="stylesheet" href = "/stylesheets/content.css">
 	</head>
 	<body>
 		<div>
@@ -57,10 +58,13 @@
 		      </div><!-- /.container-fluid -->
 		    </nav>
 		</div>
-		<div class = "RightPane">
-			<h3>
-				Welcome to Flock
-			</h4>
+		<div class = "ContentPane">
+			<div id = "Title">
+				<h4>
+					WELCOME TO FLOCK
+				</h4>
+			</div>
+			<div 
 			<img src = "/images/v.jpg" width = "200" height = "200">
 			</img>
 			<div>
