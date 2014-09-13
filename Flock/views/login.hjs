@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+ 	<head>
+ 		<title>Josh and Paul Home</title>
+ 		<link rel = 'stylesheet' href = '/styles/home.css' />
+ 	</head>
+ 	<body>
+ 		<div class = "Title">
+ 			<span id = "tit">
+ 				Welcome to Josh and Paul's home page.
+ 			</span>
+ 		</div>
+ 		<div class = "Tabs">
+ 			<span>
+ 				Opt 1
+ 			</span>
+ 			<span>
+ 				Opt 2
+ 			</span>
+ 			<span>
+ 				Opt 3
+ 			</span>
+ 		</div>
+ 		<div class = "Content">
+ 			<div>
+ 				If you already have an account, you can login below.
+ 			</div>
+ 			<form id = "Login" action = "/login" method = 'post'>
+ 				<input type = "hidden" name = "randomHdn" value = "fansn">
+ 				 	Username:
+ 				</input>
+ 				<input type = "text" name = "username" >
+ 				 	Password:
+ 				</input>
+ 				<input type = "password" name = "password" ></input>
+ 				<input type = "submit"></input>
+ 			</form>
+			<div>
+ 				If you would like to make an account, click 
+ 				<a href = "/Register">here</a>
+ 				.
+ 			</div>
+ 			<div>
+ 				If you would like to just continue on without logging in, click
+ 				<a href = "/Feed">here</a>
+ 				.
+ 			</div>
+ 		</div>
+ 		<div class = "Bottom">
+ 			Let's put some stuff down here too.
+ 		</div>
+ 	</body>
+ </html>
