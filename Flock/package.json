@@ -8,6 +8,7 @@
     "debug": "~1.0.4",
     "express": "~4.8.6",
     "facebook-node-sdk": "^0.2.0",
+    "fbgraph": "^0.2.11",
     "hjs": "~0.0.6",
     "mongoose": "^3.8.16",
     "morgan": "~1.2.3",
