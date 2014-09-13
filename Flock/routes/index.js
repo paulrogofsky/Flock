@@ -1,7 +1,12 @@
 var express = require('express');
 var mailer = require('../mailer');
 var mongoose = require('mongoose');
+var crypto = require("crypto");
 var router = express.Router();
+
+var algorithm = 'aes256';
+var key = 'theflockteam';
+var cipher = crypto.createCipher(algorithm, key);
 
 /* GET home page. */
 router.get('/', function(req, res) {
@@ -67,7 +72,13 @@ router.post('/RegisterNow', function(req, res, next) {
 
 router.post('/ConfirmRegister', function (req, res, next) {
 	var Person = mongoose.model('person');
-	Person.findOneAndUpdate( { email : req.body.Email }, { password: req.body.Password } );
+	Person.findOne( { email : req.body.Email } , function(err, user) {
+		if ( user.pin == req.body.Pin ) {
+			var password = req.body.Password;
+			var encrypted = cipher.update(password, 'utf8', 'hex') + cipher.final('hex');
+			Person.findOneAndUpdate( { email : req.body.Email }, { password: encrypted } );
+		}
+	});
 });
 
 function emailpin(pin, email, res)
