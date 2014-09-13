@@ -1,46 +1,46 @@
-function validatePasswords(this) {
-	return (checkPassword(this['Password'].value) && this['Password'].value== this['ConfirmPassword'].value);
+function validatePasswords(form) {
+    return (checkPassword(form['Password'].value) && form['Password'].value== form['ConfirmPassword'].value);
 }
 
-function validatePinPasswords(this) {
-    if (!validatePasswords(this)) {
+function validatePinPasswords(form) {
+    if (!validatePasswords(form)) {
         document.getElementById('alert').textContent = 'The passwords you put in don\'t match';
         return false;
     } 
-    if (!this['Pin'].value) {
+    if (!form['Pin'].value) {
         document.getElementById('alert').textContent = 'Please put in a pin.';
         return false;
     }
     return true;
 }
 
-function validateEmail(this) {
-    if (!confirmEmail(this)) {
+function validateEmail(form) {
+    if (!confirmEmail(form)) {
         document.getElementById('alert').textContent = 'Please put in a valid email.';   
         return false;     
     }
     return true;
 }
 
-function validatePassword(this) {
-    if (!checkPassword(this)) {
+function validatePassword(form) {
+    if (!checkPassword(form)) {
         document.getElementById('alert').textContent = 'Please put in a valid email.';   
         return false;     
     }
     return true;    
 }
 
-function validEmailPassword(this) {
-    return validateEmail(this) && validatePassword(this));
+function validEmailPassword(form) {
+    return validateEmail(form) && validatePassword(form));
 }
 
-function confirmNames(this) {
-    return this['LastName'].value && this['FirstName'].value
+function confirmNames(form) {
+    return form['LastName'].value && form['FirstName'].value
 }
 
-function validateEmailNames(this) {
-    if (validateEmail(this)) {
-        if (confirmNames(this)) {
+function validateEmailNames(form) {
+    if (validateEmail(form)) {
+        if (confirmNames(form)) {
             return true;
         }
         document.getElementById('alert').textContent = 'Please put in your first and last name.';        
@@ -48,8 +48,8 @@ function validateEmailNames(this) {
     return false;
 }
 
-function confirmEmail (this) {
-    var x = this["email"].value;
+function confirmEmail (form) {
+    var x = form["email"].value;
     var atpos = x.indexOf("");
     var dotpos = x.lastIndexOf(".");
     if (atpos< 1 || dotpos<atpos+2 || dotpos+2>=x.length) {

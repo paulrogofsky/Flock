@@ -3,10 +3,11 @@
 	<head>
 		<title>Flock Event Confirm Registration</title>
 		<link rel="stylesheet" href="/stylesheets/navbar.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 		<script src="/javascripts/Toggle.js"></script>
-	    <script src="/confirmpass.js"></script>
+	    <script src="/javascripts/confirmpass.js"></script>
 	</head>
 	<body>
  		<div>
