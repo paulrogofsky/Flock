@@ -27,6 +27,10 @@ router.get('/Navbar1',function(req,res){
 	res.render('navbar1.hjs')
 });
 
+// router.get('/ConfirmRegister', function(req, res) {
+// 	res.render(ConfirmRegister);
+// }
+
 router.post('/RegisterNow', function(req, res, next) {
   if (!req.body.Email || !req.body.FirstName || !req.body.LastName) {
     console.log('You must provide an email address, first and last name.');
@@ -47,7 +51,7 @@ router.post('/RegisterNow', function(req, res, next) {
       next(err);
     } else {
       console.log('Message sent successfully!');
-      res.redirect('/Home');
+			res.render('ConfirmRegister', { Email : req.body.Email });
     }
   });
 });
