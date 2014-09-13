@@ -10,6 +10,13 @@ var users = require('./routes/users');
 
 var app = express();
 
+var debug = require('debug')('Flock');
+app.set('port', process.env.PORT || 3000);
+
+var server = app.listen(app.get('port'), function() {
+  debug('Express server listening on port ' + server.address().port);
+});
+
 var mongoose = require('mongoose');
 
 mongoose.connect('mongodb://admin:flockbro@ds035310.mongolab.com:35310/flockdb');
