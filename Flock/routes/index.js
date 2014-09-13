@@ -1,5 +1,6 @@
 var express = require('express');
 var mailer = require('../mailer');
+var mongoose = require('mongoose');
 var router = express.Router();
 
 /* GET home page. */
@@ -27,33 +28,30 @@ router.get('/Navbar1',function(req,res){
 	res.render('navbar1.hjs')
 });
 
-// router.get('/ConfirmRegister', function(req, res) {
-// 	res.render(ConfirmRegister);
-// }
-
 router.post('/RegisterNow', function(req, res, next) {
-  if (!req.body.Email || !req.body.FirstName || !req.body.LastName) {
+  if (req.body.Email === '' || req.body.FirstName === '' || req.body.LastName === '') {
     console.log('You must provide an email address, first and last name.');
     res.redirect('/Register');
-  }
+  } else {
 
-  var pin = makeid();
+	  var pin = makeid();
 
-  var mailOptions = {
-    from: 'The Flock Team <theflockteam@gmail.com>',
-    to: req.body.Email,
-    subject: 'Welcome to Flock!',
-    text: 'Welcome to Flock! A new way to enjoy the events you love. Please confirm your email with the following key: ' + pin
-  };
+	  var mailOptions = {
+	    from: 'The Flock Team <theflockteam@gmail.com>',
+	    to: req.body.Email,
+	    subject: 'Welcome to Flock!',
+	    text: 'Welcome to Flock! A new way to enjoy the events you love. Please confirm your email with the following key: ' + pin
+	  };
 
-  mailer.sendMail(mailOptions, function(err, info) {
-    if (err) {
-      next(err);
-    } else {
-      console.log('Message sent successfully!');
-			res.render('ConfirmRegister', { Email : req.body.Email });
-    }
-  });
+	  mailer.sendMail(mailOptions, function(err, info) {
+	    if (err) {
+	      next(err);
+	    } else {
+	      console.log('Message sent successfully!');
+				res.render('ConfirmRegister', { Email : req.body.Email });
+	    }
+	  });
+	}
 });
 
 function makeid()

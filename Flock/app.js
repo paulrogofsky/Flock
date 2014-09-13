@@ -22,6 +22,7 @@ mongoose.connect('mongodb://admin:flockbro@ds035310.mongolab.com:35310/flockdb')
 mongoose.model('person', {
     first_name: String,
     last_name: String,
+    pin: String,
     password: String,
     age: Number,
     events_started: [Number],
