@@ -65,6 +65,11 @@ router.post('/RegisterNow', function(req, res, next) {
 	}
 });
 
+router.post('/ConfirmRegister', function (req, res, next) {
+	var Person = mongoose.model('person');
+	Person.findOneAndUpdate( { email : req.body.Email }, { password: req.body.Password } );
+});
+
 function emailpin(pin, email, res)
 {
 	var mailOptions = {
