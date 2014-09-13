@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>test</title>
+    <style type="text/css">
+
+       iframe { position:relative; width:100%; border:none; bottom:10px; }
+       div {position:relative;bottom:120px;}
+    </style>
+  </head>
+  <body>
+    <iframe src = "navbar"></iframe>
+    <div>
+      <p>
+        hello
+      </p>
+    </div>
+  </body>
+</html>
