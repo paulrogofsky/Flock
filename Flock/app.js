@@ -19,6 +19,24 @@ var mongoose = require('mongoose');
 
 mongoose.connect('mongodb://admin:flockbro@ds035310.mongolab.com:35310/flockdb');
 
+mongoose.model('person', {
+    first_name: String,
+    last_name: String,
+    password: String,
+    age: Number,
+    events_started: [Number],
+    events_joined: [Number]
+});
+
+mongoose.model('event', {
+    time_created: Date,
+    time_occurring: Date,
+    event_creator: String,
+    people_going: [String],
+    place: String,
+    group_size_limit: Number
+})
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hjs');
