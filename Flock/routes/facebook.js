@@ -39,16 +39,26 @@ router.get('/facebook', function(req, res) {
       "code":           req.query.code
   }, function (err, facebookRes) {
   	graph.get('/me', function(err, data) {
+
   		var Person = mongoose.model('person');
-  		fb_person = new Person();
-  		fb_person.first_name = data.first_name;
-  		fb_person.last_name = data.last_name;
-  		fb_person.facebook = data.id;
-  		fb_person.save(function (err, saved) {
-  			if (!err) {
-  				console.log('Saved!');
-  			}
-  		})
+  		var fb_person = new Person();
+		  		fb_person.first_name = data.first_name;
+		  		fb_person.last_name = data.last_name;
+		  		fb_person.facebook = data.id;
+
+  		Person.find( { facebook : data.id } , function (err, user) {
+  			if (user.length == 0) { 
+  				console.log(fb_person);
+		  		fb_person.save(function (err, saved) {
+		  			if (!err) {
+		  				console.log('Saved!');
+		  			} else {
+		  				console.log('Error!');
+		  			}
+	  			});
+  			};
+  		});
+
   	});
     res.redirect('/Home');
   });
