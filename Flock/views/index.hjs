@@ -8,13 +8,18 @@
 	<body>
 		<div class = "LeftPane">
 			<ul class="nav nav-list">
-				<li class="nav-header">List header</li>
 				<li class="active"><a href="#">Home</a></li>
-				<li><a href="#">Library</a></li>
+				<li class="active"><a href="/Founds">Founders</a></li>
+				<li class="active"><a href="/Events">Events</a></li>
+				<li class="active"><a href="/People">People</a></li>
+				<li class="active"><a href="/Search">Search</a></li>
+				<li class="active"><a href="/Login">Login</a></li>
 			</ul>
 		</div>
 		<div class = "RightPane">
-			Info
+			<h4>
+				Welcome to Flock
+			</h4>
 		</div>	
 	</body>
 </html>

@@ -45,6 +45,11 @@
  				<a href = "/Feed">here</a>
  				.
  			</div>
+ 			<div>
+ 				If you would like to login with Facebook, click
+ 				<a href = "/Facebook">here</a>
+ 				.
+ 			</div>
  		</div>
  		<div class = "Bottom">
  			Let's put some stuff down here too.
