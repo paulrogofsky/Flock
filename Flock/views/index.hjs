@@ -1,11 +1,23 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>{{ title }}</title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <h1>{{ title }}</h1>
-    <p>Welcome to {{ title }}</p>
-  </body>
+	<head>
+		<title>Flock Home Page</title>
+		<link rel='stylesheet' href='/stylesheets/home.css' />
+	</head>
+	<body>
+		<div class = "TopFrame">
+			<div>
+				About Flock
+			</div>
+			<div>
+				Founders
+			</div>
+			<div>
+				Contact
+			</div>
+			<div>
+				Login
+			</div>
+		</div>
+ 	</body>
 </html>
