@@ -73,10 +73,27 @@ router.post('/RegisterNow', function(req, res, next) {
 router.post('/ConfirmRegister', function (req, res, next) {
 	var Person = mongoose.model('person');
 	Person.findOne( { email : req.body.Email } , function(err, user) {
-		if ( user.pin == req.body.Pin ) {
+		if ( user.pin === req.body.Pin ) {
 			var password = req.body.Password;
 			var encrypted = cipher.update(password, 'utf8', 'hex') + cipher.final('hex');
-			Person.findOneAndUpdate( { email : req.body.Email }, { password: encrypted } );
+			Person.findOneAndUpdate( { email : req.body.Email }, { password: encrypted }, function(err, data) {
+				if (err) {
+					console.log('Could not update');
+				} else {
+					console.log('Saved!');
+				}
+			});
+		}
+	});
+	res.redirect('/Home');
+});
+
+router.post('/RegisterAgain', function (req, res, next) {
+	Person.findOne( { email : req.body.Email } , function(err, user) {
+		if (!user) {
+			res.redirect('/Register');
+		} else {
+			emailpin(user.pin, req.body.Email, res);
 		}
 	});
 });
