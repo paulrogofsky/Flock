@@ -34,7 +34,7 @@ router.get('/Navbar1',function(req,res){
 });
 
 router.post('/RegisterNow', function(req, res, next) {
-  if (req.body.Email === '' || req.body.FirstName === '' || req.body.LastName === '') {
+  if (req.body.email === '' || req.body.FirstName === '' || req.body.LastName === '') {
     console.log('You must provide an email address, first and last name.');
     res.redirect('/Register');
   } else {
@@ -45,10 +45,10 @@ router.post('/RegisterNow', function(req, res, next) {
 		var email_person = new Person();
 	  		email_person.first_name = req.body.FirstName;
 	  		email_person.last_name = req.body.LastName;
-	  		email_person.email = req.body.Email;
+	  		email_person.email = req.body.email;
 	  		email_person.pin = pin;
 
-		Person.find( { email : req.body.Email } , function (err, user) {
+		Person.find( { email : req.body.email } , function (err, user) {
 			if (user.length == 0) { 
 	  		email_person.save(function (err, saved) {
 	  			if (!err) {
@@ -56,12 +56,12 @@ router.post('/RegisterNow', function(req, res, next) {
 	  			} else {
 	  				console.log('Error!');
 	  			}
-	  			emailpin(pin, req.body.Email, res);
+	  			emailpin(pin, req.body.email, res);
 				});
 			} else {
 				if (!user[0].password) {
 					console.log(user[0].pin);
-					emailpin(user[0].pin, req.body.Email, res);
+					emailpin(user[0].pin, req.body.email, res);
 				} else {
 					res.redirect('/Login');
 				}
@@ -72,11 +72,11 @@ router.post('/RegisterNow', function(req, res, next) {
 
 router.post('/ConfirmRegister', function (req, res, next) {
 	var Person = mongoose.model('person');
-	Person.findOne( { email : req.body.Email } , function(err, user) {
+	Person.findOne( { email : req.body.email } , function(err, user) {
 		if ( user.pin === req.body.Pin ) {
 			var password = req.body.Password;
 			var encrypted = cipher.update(password, 'utf8', 'hex') + cipher.final('hex');
-			Person.findOneAndUpdate( { email : req.body.Email }, { password: encrypted }, function(err, data) {
+			Person.findOneAndUpdate( { email : req.body.email }, { password: encrypted }, function(err, data) {
 				if (err) {
 					console.log('Could not update');
 				} else {
@@ -89,11 +89,14 @@ router.post('/ConfirmRegister', function (req, res, next) {
 });
 
 router.post('/RegisterAgain', function (req, res, next) {
-	Person.findOne( { email : req.body.Email } , function(err, user) {
+	var Person = mongoose.model('person');
+	console.log(req.body.email);
+	Person.find({ email : req.body.email } , function(err, user) {
 		if (!user) {
 			res.redirect('/Register');
 		} else {
-			emailpin(user.pin, req.body.Email, res);
+			console.log(user);
+			emailpin(user.pin, req.body.email, res);
 		}
 	});
 });
@@ -109,7 +112,7 @@ function emailpin(pin, email, res)
 
 	  mailer.sendMail(mailOptions, function(err, info) {
 	    if (err) {
-	      next(err);
+	      console.log(err);
 	    } else {
 	      console.log('Message sent successfully!');
 				res.render('ConfirmRegister', { Email : email });
