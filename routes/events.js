@@ -6,3 +6,5 @@ var mongoose = require('mongoose');
 router.get('/CreateGroup', function(req, res) {
 	res.render('CreateGroup');
 });
+
+module.exports = router;
