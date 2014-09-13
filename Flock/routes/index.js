@@ -91,9 +91,11 @@ router.post('/ConfirmRegister', function (req, res, next) {
 router.post('/RegisterAgain', function (req, res, next) {
 	var Person = mongoose.model('person');
 	console.log(req.body.email);
-	Person.find({ email : req.body.email } , function(err, user) {
+	Person.findOne({ email : req.body.email } , function(err, user) {
 		if (!user) {
 			res.redirect('/Register');
+		} else if (user.password) {
+			res.redirect('/Login');
 		} else {
 			console.log(user);
 			emailpin(user.pin, req.body.email, res);
