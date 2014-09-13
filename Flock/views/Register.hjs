@@ -1,66 +1,37 @@
 <!DOCTYPE html>
 <html>
  	<head>
- 		<title>Flock Registration </title>
+		<title>Flock Registration</title>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 		<link rel="stylesheet" href="/stylesheets/index.css">
+		<link rel="stylesheet" href="/stylesheets/iframe.css">
  	</head>
  	<body>
- 		<h4>
- 			REGISTRATION PAGE
- 		</h4>
- 		<div class = "Email">
- 			<span>
- 				<p>
- 					If you would like to login with your email, please indicate below.
- 				</p>
- 				<p>
- 					We will send you an email with a pin.
- 				</p>
- 			</span>
-	 		<form id = "Register" action = "/RegisterNow" method = 'post'>
-	 			<label for="Email">Email:</label>
-	 			<input type = "text" name = "Email"></input>
-	 			<label for="FirstName">First Name:</label>
-	 			<input type = "text" name = "FirstName"></input>
-	 			<label for="LastName">Last Name:</label>
-	 			<input type = "text" name = "LastName"></input>
-	 			<input type = "submit" class = "btn"></input>
-<!-- 	 			button adder here -->
-	 		</form>
-	 	</div>
-		<div class = "navbar">
-			<div class ="navbar-inner">
-				<ul class="nav">
-					<li class="active"><a href="/">Home</a></li>
-					<li class="active"><a href="/Founders">Founders</a></li>
-					<li class="active">
-						<form action = "/SearchEvents" method = "post" id = "SearchEvents">
-							<a href="/Search">Search Events </a>
-							<input type = "text" name = "query" id = "query" class = "span2">
-							</input>
-							<button type = "submit" class = "btn"> Submit</button>
-						</form>
-					</li>
-					<li class="active">
-						<form action = "/SearchPeople" method = "post" id = "SearchPeople">
-							<a href="/People">Search People</a>
-							<input type = "text" name = "query" id = "query" class = "span2">
-							</input>
-							<button type = "submit" class = "btn"> Submit</button>
-						</form>
-					</li>
-					<li class="active">
-						<form class = "navbar-search pull-left" action = "/SearchLocation" method = "post" id = "SearchLocation">
-							<a href="/Search">Search Near You</a>
-							<input type = "text" name = "query" id = "query" class = "span2">
-							</input>
-							<button type = "submit" class = "btn"> Submit</button>
-						</form>
-					</li>
-					<li class="active"><a href="/Login">Login</a></li>
-				</ul>
-			</div>
-		</div>
+ 		<iframe src = "navbar"></iframe>
+ 		<div>
+	 		<h4>
+	 			REGISTRATION PAGE
+	 		</h4>
+	 		<div class = "Email">
+	 			<span>
+	 				<p>
+	 					If you would like to login with your email, please indicate below.
+	 				</p>
+	 				<p>
+	 					We will send you an email with a pin.
+	 				</p>
+	 			</span>
+		 		<form id = "Register" action = "/RegisterNow" method = 'post'>
+		 			<label for="Email">Email:</label>
+		 			<input type = "text" name = "Email"></input>
+		 			<label for="FirstName">First Name:</label>
+		 			<input type = "text" name = "FirstName"></input>
+		 			<label for="LastName">Last Name:</label>
+		 			<input type = "text" name = "LastName"></input>
+		 			<input type = "submit" class = "btn"></input>
+	<!-- 	 			button adder here -->
+		 		</form>
+		 	</div>
+		 </div>
  	</body>
  </html>
