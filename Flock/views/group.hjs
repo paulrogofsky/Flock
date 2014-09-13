@@ -1,45 +1,61 @@
 <!DOCTYPE html>
 <html>
  	<head>
- 		<title>Flock Registration </title>
+ 		<title>Flock Group {{name}} </title>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 		<link rel="stylesheet" href="/stylesheets/index.css">
  	</head>
  	<body>
- 		<h4>
- 			REGISTRATION PAGE
- 		</h4>
- 		<div class = "Facebook">
+ 		<div class = "event">
  			<span>
- 				If you would like to login with facebook, please type in your credentials below
+ 				Name: {{name}}
  			</span>
- 			<form id = "Facebook" action = "/FacebookLogin" method = "post">
- 	 			<label for="Email">Email:</label>
-	 			<input type = "text" name = "Email"></input>
- 	 			<label for="Password">Password:</label>
-	 			<input type = "password" name = "Password"></input>	 			
- 			</form>
+ 			<span>
+ 				Attending Event: {{Event.name}}
+ 			</span>
+ 			<span>
+ 				Event Time Start: {{Event.start}}
+ 			</span>
+ 			<span>
+ 				Event Time Start: {{Event.end}}
+ 			</span>
+ 			<span>
+ 				Location: {{location}}
+ 			</span>
+ 			<span>
+ 				Group size: {{size}}
+ 			</span>
+ 			<span>
+ 				Members: 
+ 				{{#Members}}
+ 				<p> {{Members.name}}
+ 				</p>
+ 				{{/Members}}
+ 			</span>
+ 			<span>
+ 				Total Members: {{count}}
+ 			</span>
+ 			<span>
+ 				Looking for {{desired}} more people
+ 			</span>
+ 			<div>
+ 				<h4>
+ 					Contact Information
+ 				</h4>
+ 				<span>
+ 					Phone:{{contact.phone}}
+ 				</span>
+ 				<span>
+ 					Email:{{contact.email}}
+ 				</span>
+ 			</div>
+ 			<span>
+ 				Ideal candidate:
+ 				<p>
+ 					{{description}}
+ 				</p>
+ 			</span>
  		</div>
- 		<div class = "Email">
- 			<span>
- 				<p>
- 					If you would like to login with your email, please indicate below.
- 				</p>
- 				<p>
- 					We will send you an email with a pin.
- 				</p>
- 			</span>
-	 		<form id = "Register" action = "/RegisterNow" method = 'post'>
-	 			<label for="Email">Email:</label>
-	 			<input type = "text" name = "Email"></input>
-	 			<label for="First Name">First Name:</label>
-	 			<input type = "text" name = "First Name"></input>
-	 			<label for="Last Name">Last Name:</label>
-	 			<input type = "text" name = "First Name"></input>
-	 			<input type = "submit"></input>
-<!-- 	 			button adder here -->
-	 		</form>
-	 	</div>
 		<div class = "navbar">
 			<div class ="navbar-inner">
 				<ul class="nav">
@@ -73,5 +89,5 @@
 				</ul>
 			</div>
 		</div>
- 	</body>
- </html>
+	</body>
+</html>

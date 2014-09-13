@@ -1,26 +1,11 @@
 <!DOCTYPE html>
 <html>
  	<head>
- 		<title>Josh and Paul Home</title>
- 		<link rel = 'stylesheet' href = '/styles/home.css' />
+ 		<title>Flock Login</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+		<link rel="stylesheet" href="/stylesheets/register.css">
  	</head>
  	<body>
- 		<div class = "Title">
- 			<span id = "tit">
- 				Welcome to Josh and Paul's home page.
- 			</span>
- 		</div>
- 		<div class = "Tabs">
- 			<span>
- 				Opt 1
- 			</span>
- 			<span>
- 				Opt 2
- 			</span>
- 			<span>
- 				Opt 3
- 			</span>
- 		</div>
  		<div class = "Content">
  			<div>
  				If you already have an account, you can login below.
@@ -42,7 +27,7 @@
  			</div>
  			<div>
  				If you would like to just continue on without logging in, click
- 				<a href = "/Feed">here</a>
+ 				<a href = "/Events">here</a>
  				.
  			</div>
  			<div>
@@ -51,8 +36,35 @@
  				.
  			</div>
  		</div>
- 		<div class = "Bottom">
- 			Let's put some stuff down here too.
- 		</div>
+		<div class = "navbar">
+			<div class ="navbar-inner">
+				<ul class="nav">
+					<li class="active"><a href="#">Home</a></li>
+					<li class="active"><a href="/Founders">Founders</a></li>
+					<li class="active">
+						<form action = "/SearchEvents" method = "post" id = "SearchEvents">
+							<a href="/Search">Search Events </a>
+							<input type = "text" name = "query" id = "query">
+							</input>
+						</form>
+					</li>
+					<li class="active">
+						<form action = "/SearchPeople" method = "post" id = "SearchPeople">
+							<a href="/People">Search People</a>
+							<input type = "text" name = "query" id = "query">
+							</input>
+						</form>
+					</li>
+					<li class="active">
+						<form action = "/SearchLocation" method = "post" id = "SearchLocation">
+							<a href="/Search">Search Near You</a>
+							<input type = "text" name = "query" id = "query">
+							</input>
+						</form>
+					</li>
+					<li class="active"><a href="/Login">Login</a></li>
+				</ul>
+			</div>
+		</div>
  	</body>
  </html>
