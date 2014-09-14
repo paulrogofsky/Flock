@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
  	<head>
- 		<title>Flock Group {{name}} </title>
+ 		<title>Flock Groups for Event {{event.name}} </title>
 	    <link rel="stylesheet" href="/stylesheets/navbar.css">
 	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 	    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
@@ -57,35 +57,62 @@
 	          </div><!-- /.container-fluid -->
 	        </nav>
 	    </div>
- 		<div class = "group">
- 			<span>
- 				Name: {{name}}
- 			</span>
- 			<div>
- 				<p>
- 					Members: 
- 				</p>
- 				{{#Members}}
- 				<span>
-	 				{{Members.first_name}} {{Members.last_name}}
-	 			</span>
- 				{{/Members}}
+ 		<div class = "groups">
+ 			<div id = "EventProperties">
+	 			<div>
+	 				<b>Name:</b> {{event.name}}
+	 			</div>
+	 			<div>
+	 				<b>Location:</b> {{event.location}}
+	 			</div>
+	 			<div>
+	 				<b>Date:</b> {{event.date}}
+	 			</div>
+	 			<div>
+	 				<b>Time Start:</b> {{event.start}}
+	 			</div>
+	 			<div>
+	 				<b>Time End:</b> {{event.end}}
+	 			</div>
  			</div>
- 			<span>
- 				Max Size: {{max_size}}
- 			</span>
- 			<span>
- 				Event: {{Event.id}}
- 			</span>
- 			<span>
- 				Contact: {{Creator.first_name}} {{Creator.last_name}}
- 			</span>
- 			<span>
- 				<b>
- 					Description: 
- 				<b>
- 				{{Description}}
- 			</span>
+ 			{{#groups}}
+ 			<div id = "group-{{groups.id}}">
+	 			<span>
+	 				Name: {{group.name}}
+	 			</span>
+	 			<span>
+	 				Location: {{group.location}}
+	 			</span>
+	 			<span>
+	 				Date: {{group.date}}
+	 			</span>
+	 			<span>
+	 				Time Start: {{group.start}}
+	 			</span>
+	 			<span>
+	 				Time End: {{group.end}}
+	 			</span>
+	 			<span>
+	 				Max People: {{group.max_size}}
+	 			</span>
+	 			<span>
+	 				Description: {{group.description}}
+	 			</span>
+	 			<span>
+	 				Details: {{group.details}}
+	 			</span>
+	 			<span>
+	 				Keywords: {{#group.keywords}}
+					<p>
+						{{group.keywords}}
+					</p>
+					{{/group.keywords}}
+	 			</span>
+	 			<span>
+	 				Contact Person: {{group.creator.name}}
+	 			</span>
+	 		</div>
+	 		{{/groups}}
  		</div>
 	</body>
 </html>

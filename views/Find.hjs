@@ -11,6 +11,7 @@
 	    <style>
 	    	form label {display:block;margin-left:15px;}
 	    	form input {display:block;margin-left:15px;margin-bottom:15px;}
+	    	#btn223 {padding-left:50px;padding-right:50px;margin-left:20px;margin-top:10px;}
 	    </style>
  	</head>
  	<body>
@@ -71,13 +72,21 @@
 	    			Please indicate below where you would like to be redirected to
 	    		</span>
 	    	</div>
-	    	<div class = "dropdown">
+	    	<div class="btn-group">
+			    <button type="button" data-toggle="dropdown" class="btn btn-default dropdown-toggle" id = "btn223">Choices <span class="caret"></span></button>
+			    <ul class="dropdown-menu">
+			        <li><a href="/Events/Create">Event</a></li>
+			        <li><a href="/">Group</a></li>
+			        <li><a href="/CreatePerson">Person</a></li>
+			    </ul>
+			</div>
+<!-- 	    	<div class = "dropdown">
 				<ul class="dropdown-menu" role="menu" id = "rankSubMenu">
 					<li><a href="/CreateEvent">Group</a></li>
 					<li><a href="/CreateGroup">Event</a></li>
 					<li><a href="/CreatePerson">Person</a></li>
 				</ul>
-			</div>
+			</div> -->
 	    </div>
 	</body>
 </html>

@@ -6,7 +6,7 @@
 	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 	    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 	    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-	    <link rel="stylesheet" href = "/stylesheets/content.css">
+	    <link rel = 
  	</head>
  	<body>
     	<div>
@@ -58,39 +58,35 @@
 	        </nav>
 	    </div>
  		<div class = "event">
- 			<span>
- 				Name: {{name}}
- 			</span>
- 			<span>
- 				Location: {{location}}
- 			</span>
- 			<span>
- 				Date: {{date}}
- 			</span>
- 			<span>
- 				Time Start: {{start}}
- 			</span>
- 			<span>
- 				Time End: {{end}}
- 			</span>
- 			<span>
- 				Max People: {{size}}
- 			</span>
- 			<span>
- 				Description: {{description}}
- 			</span>
- 			<span>
- 				Details: {{details}}
- 			</span>
- 			<span>
- 				Keywords: {{#keywords}}
-				<p>
-					{{keywords}}
-				</p>
-				{{/keywords}}
- 			</span>
  			<div>
- 				Groups {{#groups}}
+ 				<b>Name:</b> {{name}}
+ 			</div>
+ 			<div>
+ 				<b>Location:</b> {{location}}
+ 			</div>
+ 			<div>
+ 				<b>Date:</b> {{date}}
+ 			</div>
+ 			<div>
+ 				<b>Time Start:</b> {{start}}
+ 			</div>
+ 			<div>
+ 				<b>Time End:</b> {{end}}
+ 			</div>
+ 			<div>
+ 				<b>Max People:</b> {{size}}
+ 			</div>
+ 			<div>
+ 				<b>Description:</b> {{description}}
+ 			</div>
+ 			<div>
+ 				<b>Details:</b> {{details}}
+ 			</div>
+ 			<div>
+ 				<b>Keywords:</b> {{keywords}}
+ 			</div>
+ 			<div>
+ 				<b>Groups:</b> {{#groups}}
  				<span>
  					{{groups.name}}
  				</span>
