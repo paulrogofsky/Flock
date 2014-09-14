@@ -60,34 +60,35 @@
     </div>
  		<div class = "event">
  			<span>
- 				Name: {{name}}
+ 				Name: {{first_name}} {{last_name}}
  			</span>
+      <span>
+        Age: {{age}}
+      </span>
+      <span>
+        Gender: {{gender}}
+      </span>
  			<div>
- 				Interests:
- 				{{#Interests}}
- 				<p>
- 					{{Interests}}
- 				</p>
- 				{{/Interests}}
+        Events gone to: {{#events_attended}}
+        <ul>
+          <li>{{events_attended}}</li>
+        </ul>
+        {{/events_attended}}
  			</div>
- 			<div>
- 				Activities Attended:
- 				{{#Attended}}
- 				<p>
- 					{{Attended.name}}
- 				</p>
- 			</div>
- 			<span>
- 				Description: {{description}}
- 			</span>
- 			<span>
- 				Friends:
- 				{{#Friends}}
- 				<p>
- 					{{Friends}}
- 				</p>
- 				{{/Friends}}
- 			</span>
+      <div>
+        Events going to: {{#events_going}}
+        <ul>
+          <li>{{events_going}}</li>
+        </ul>
+        {{/events_going}}
+      </div>
+      <div>
+        Events going to: {{#interests}}
+        <ul>
+          <li>{{interests}}</li>
+        </ul>
+        {{/interests}}
+      </div>
  		</div>
 	</body>
 </html>

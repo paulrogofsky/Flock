@@ -62,50 +62,30 @@
  			<span>
  				Name: {{name}}
  			</span>
- 			<span>
- 				Attending Event: {{Event.name}}
- 			</span>
- 			<span>
- 				Event Time Start: {{Event.start}}
- 			</span>
- 			<span>
- 				Event Time Start: {{Event.end}}
- 			</span>
- 			<span>
- 				Location: {{location}}
- 			</span>
- 			<span>
- 				Group size: {{size}}
- 			</span>
- 			<span>
- 				Members: 
- 				{{#Members}}
- 				<p> {{Members.name}}
- 				</p>
- 				{{/Members}}
- 			</span>
- 			<span>
- 				Total Members: {{count}}
- 			</span>
- 			<span>
- 				Looking for {{desired}} more people
- 			</span>
  			<div>
- 				<h4>
- 					Contact Information
- 				</h4>
+ 				<p>
+ 					Members: 
+ 				</p>
+ 				{{#Members}}
  				<span>
- 					Phone:{{contact.phone}}
- 				</span>
- 				<span>
- 					Email:{{contact.email}}
- 				</span>
+	 				{{Members.first_name}} {{Members.last_name}}
+	 			</span>
+ 				{{/Members}}
  			</div>
  			<span>
- 				Ideal candidate:
- 				<p>
- 					{{description}}
- 				</p>
+ 				Max Size: {{max_size}}
+ 			</span>
+ 			<span>
+ 				Event: {{Event.id}}
+ 			</span>
+ 			<span>
+ 				Contact: {{Creator.first_name}} {{Creator.last_name}}
+ 			</span>
+ 			<span>
+ 				<b>
+ 					Description: 
+ 				<b>
+ 				{{Description}}
  			</span>
  		</div>
 	</body>

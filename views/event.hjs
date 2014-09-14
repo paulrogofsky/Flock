@@ -66,24 +66,40 @@
  				Location: {{location}}
  			</span>
  			<span>
- 				Time Start: {{begin}}
+ 				Date: {{date}}
+ 			</span>
+ 			<span>
+ 				Time Start: {{start}}
  			</span>
  			<span>
  				Time End: {{end}}
  			</span>
  			<span>
- 				Attendance: {{attendance}}
+ 				Max People: {{size}}
  			</span>
  			<span>
  				Description: {{description}}
  			</span>
  			<span>
+ 				Details: {{details}}
+ 			</span>
+ 			<span>
  				Keywords: {{#keywords}}
-				<br>
+				<p>
 					{{keywords}}
-				</br>
+				</p>
 				{{/keywords}}
  			</span>
+ 			<div>
+ 				Groups {{#groups}}
+ 				<span>
+ 					{{group.name}}
+ 				</span>
+ 				<span>
+ 					{{group.max_size}}
+ 				</span>
+ 				{{/groups}}
+ 			</div>
  		</div>
 	</body>
 </html>
