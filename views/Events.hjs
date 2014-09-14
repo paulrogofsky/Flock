@@ -58,51 +58,53 @@
 	          </div><!-- /.container-fluid -->
 	        </nav>
 	    </div>
- 		<div class = "event">
- 			<span>
- 				Name: {{name}}
- 			</span>
- 			<span>
- 				Location: {{location}}
- 			</span>
- 			<span>
- 				Date: {{date}}
- 			</span>
- 			<span>
- 				Time Start: {{start}}
- 			</span>
- 			<span>
- 				Time End: {{end}}
- 			</span>
- 			<span>
- 				Max People: {{size}}
- 			</span>
- 			<span>
- 				Description: {{description}}
- 			</span>
- 			<span>
- 				Details: {{details}}
- 			</span>
- 			<span>
- 				Keywords: {{#keywords}}
-				<p>
-					{{keywords}}
-				</p>
-				{{/keywords}}
- 			</span>
- 			<div>
- 				Groups {{#groups}}
- 				<span>
- 					{{groups.name}}
- 				</span>
- 				<span>
- 					{{groups.max_size}}
- 				</span>
- 				{{/groups}}
- 			</div>
-			<span>
-				<a href = "/Events/{{id}}/groups/create">CREATE GROUP</a>
-			</span>
- 		</div>
+	    <div id = "EVENTS">
+	    	{{#events}}
+	 		<span class = "event">
+	 			<div class = "BIG">
+	 				<b class = "TRIG">{{name}}</b> 
+	 			</div>
+	 			<div>
+	 				<b>Location:</b> <span>{{location}}</span>
+	 			</div>
+	 			<div>
+	 				<b>Date:</b> <span>{{date}}</span>
+	 			</div>
+	 			<div>
+	 				<b>Time Start:</b> <span>{{start}}</span>
+	 			</div>
+	 			<div>
+	 				<b>Time End:</b> <span>{{end}}</span>
+	 			</div>
+	 			<div>
+	 				<b>Max People:</b> <span>{{size}}</span>
+	 			</div>
+	 			<div>
+	 				<b>Description:</b> <span>{{description}}</span>
+	 			</div>
+	 			<div>
+	 				<b>Details:</b> <span>{{details}}</span>
+	 			</div>
+	 			<div>
+	 				<b>Keywords:</b> <span>{{keywords}}</span>
+	 			</div>
+	 			<div>
+	 				<b>Groups:</b> {{#groups}}
+	 				<div>
+		 				<span>
+		 					{{groups.name}}
+		 				</span>, 
+		 				<span>
+		 					{{groups.max_size}}
+		 				</span>
+		 				<span>
+		 					<a href = "/Events/{{id}}/groups/create">CREATE GROUP</a>
+		 				</span>
+		 			</div>
+	 				{{/groups}}
+	 			</div>
+	 		</span>
+	 		{{/events}}
+	 	</div>
 	</body>
 </html>

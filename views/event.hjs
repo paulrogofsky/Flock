@@ -58,6 +58,8 @@
 	        </nav>
 	    </div>
  		<span class = "event">
+ 			<div class = "background">
+ 			</div>
  			<div class = "BIG">
  				<b class = "TRIG">{{name}}</b> 
  			</div>

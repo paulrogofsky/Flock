@@ -1,9 +1,12 @@
-.event {display:block;background-color:yellow;border-style:solid;border-radius:25px;border-width:5px;border-color:red;margin-right:1200px;background-image:url('/images/images.jpg');color:white;}
+.event {display:block;background-color:black;border-style:solid;border-radius:25px;border-width:5px;border-color:red;text-align:center;margin-left:auto;margin-right:auto;color:white;z-index:-5;
+    position:relative;
+    background: rgba(0,0,0, 0.5);
+}
 
 body {background-image:url('/images/bricks.jpg');}
 
-.event div b {font-size:17pt;}
+.event div {font-size:17pt;position:relative;}
 
-.event .BIG .TRIG {margin-left:15px;font-size:32pt; color:blue;}
+.event .BIG .TRIG {margin-left:15px;font-size:32pt; color:red;}
 
 .event div span {font-size:16pt;}
