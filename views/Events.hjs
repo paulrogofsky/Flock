@@ -9,13 +9,13 @@
 	    <link rel="stylesheet" href = "/stylesheets/content.css">
 	    <link rel = "stylesheet" href="/stylesheets/events.css">
 	    <script type = "text/javascript">
-	    	function changeVisibility (elmt) {
-	    		if (document.getElementById('CreateGroup').style.display == '') {
-	    			document.getElementById('CreateGroup').style.display = 'block';
+	    	function changeVisibility (elmt,eventId) {
+	    		if (document.getElementById('createGroup' + eventId).style.display == '') {
+	    			document.getElementById('createGroup' + eventId).style.display = 'block';
 	    			elmt.checked = true;
 	    		}
 	    		else {
-	    			document.getElementById('CreateGroup').style.display = '';
+	    			document.getElementById('createGroup' + eventId).style.display = '';
 	    			elmt.checked = false;
 	    		}
 
@@ -119,13 +119,13 @@
 	 			</div>
 				<div>
  					<form>
-						<input type="checkbox" name = "AddGroup" onclick="changeVisibility(this);">Add Group</input>
+						<input type="checkbox" name = "AddGroup" onclick="changeVisibility(this,{{event_id}});">Add Group</input>
 					</form>
  				</div>
-		 		<div id = "CreateGroup">
-			 		<form id = "CreateGroup2" action = "/CreateGroup" method = 'post'>
+		 		<div id = "CreateGroup{{event_id}}" style = '{display:""}'>
+			 		<form class = "CreateGroup2" action = "/CreateGroup" method = 'post'>
 			 			<label for="GroupName">Group Name:</label>
-			 			<input type = "text" name = "GroupName" onmouseclick = "this.focus();"></input>
+			 			<input type = "text" name = "GroupName"></input>
 			 			<input type = "hidden" name = "EventId" value = "{{event_id}}"></input>
 			 			<label for="max_size">What is the maximum size of this group? </label>
 			 			<input type = "text" name = "max_size"></input>
