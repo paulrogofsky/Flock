@@ -60,56 +60,56 @@
  		<div class = "groups">
  			<div id = "EventProperties">
 	 			<div>
-	 				<b>Name:</b> {{event.name}}
+	 				<b>Name:</b> {{events.name}}
 	 			</div>
 	 			<div>
-	 				<b>Location:</b> {{event.location}}
+	 				<b>Location:</b> {{events.location}}
 	 			</div>
 	 			<div>
-	 				<b>Date:</b> {{event.date}}
+	 				<b>Date:</b> {{events.date}}
 	 			</div>
 	 			<div>
-	 				<b>Time Start:</b> {{event.start}}
+	 				<b>Time Start:</b> {{events.start_time}}
 	 			</div>
 	 			<div>
-	 				<b>Time End:</b> {{event.end}}
+	 				<b>Time End:</b> {{events.end_time}}
 	 			</div>
  			</div>
  			{{#groups}}
  			<div id = "group-{{groups.id}}">
 	 			<span>
-	 				Name: {{group.name}}
+	 				Name: {{groups.name}}
 	 			</span>
 	 			<span>
-	 				Location: {{group.location}}
+	 				Location: {{groups.location}}
 	 			</span>
 	 			<span>
-	 				Date: {{group.date}}
+	 				Date: {{groups.date}}
 	 			</span>
 	 			<span>
-	 				Time Start: {{group.start}}
+	 				Time Start: {{groups.start}}
 	 			</span>
 	 			<span>
-	 				Time End: {{group.end}}
+	 				Time End: {{groups.end}}
 	 			</span>
 	 			<span>
-	 				Max People: {{group.max_size}}
+	 				Max People: {{groups.max_size}}
 	 			</span>
 	 			<span>
-	 				Description: {{group.description}}
+	 				Description: {{groups.description}}
 	 			</span>
 	 			<span>
-	 				Details: {{group.details}}
+	 				Details: {{groups.details}}
 	 			</span>
 	 			<span>
-	 				Keywords: {{#group.keywords}}
+	 				Keywords: {{#groups.keywords}}
 					<p>
-						{{group.keywords}}
+						{{groups.keywords}}
 					</p>
-					{{/group.keywords}}
+					{{/groups.keywords}}
 	 			</span>
 	 			<span>
-	 				Contact Person: {{group.creator.name}}
+	 				Contact Person: {{groups.creator.name}}
 	 			</span>
 	 		</div>
 	 		{{/groups}}
