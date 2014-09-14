@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html>
  	<head>
-		<title>Flock Individual Profile Creation</title>
+		<title>Flock Create Items</title>
 		<link rel="stylesheet" href="/stylesheets/navbar.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 		<script src="/javascripts/Toggle.js"></script>
 	    <script src="/javascripts/confirmpass.js"></script>
+	    <link rel="stylesheet" href = "/stylesheets/content.css">
 	    <style>
 	    	form label {display:block;margin-left:15px;}
 	    	form input {display:block;margin-left:15px;margin-bottom:15px;}
@@ -62,15 +63,22 @@
 	          </div><!-- /.container-fluid -->
 	        </nav>
 	    </div>
- 		<div>
-	 		<form id = "PersonalProfile" action = "/PersonalProfile" method = 'post'>
-	 			<label for="age">Age:</label>
-	 			<input type = "text" name = "age"></input>
-	 			<label for="gender">Gender:</label>
-	 			<input type = "text" name = "gender"></input>
-				<input type = "submit"></input>
-<!-- 	 			button adder here -->
-	 		</form>
-	 	</div>
- 	</body>
- </html>
+	    <div class = "RedirectProcessor">
+	    	<div class = "instructions">
+	    		<span>
+	    			We would like to redirect you to our various creation pages. 
+	    		</span>
+	    		<span>
+	    			Please indicate below where you would like to be redirected to
+	    		</span>
+	    	</div>
+	    	<div class = "dropdown">
+				<ul class="dropdown-menu" role="menu" id = "rankSubMenu">
+					<li><a href="/CreateEvent">Group</a></li>
+					<li><a href="/CreateGroup">Event</a></li>
+					<li><a href="/CreatePerson">Person</a></li>
+				</ul>
+			</div>
+	    </div>
+	</body>
+</html>
