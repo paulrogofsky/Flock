@@ -100,7 +100,7 @@
 		 			</div>
 	 				{{/groups}}
 					<span>
-	 					<a href = "/Events/{{event_id}}/groups/create">CREATE GROUP</a>
+	 					<a href = "/Events/{{uuid}}/groups/create">CREATE GROUP</a>
 	 				</span>
 	 			</div>
 	 		</span>	 		
