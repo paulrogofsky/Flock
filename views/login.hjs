@@ -25,12 +25,12 @@
 	            <!-- Collect the nav links, forms, and other content for toggling -->
 	            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 	              <ul class="nav navbar-nav" id = "NavItems">
-	                <li class="active"><a href="#">Home</a></li>
+	                <li><a href="/">Home</a></li>
 	                <li><a href="/Founders">Founders</a></li>
 	                <li><a href = "/Groups">Group Feed</a></li>
 	                <li><a href = "/Events">Event Feed</a></li>
 	                <li><a href = "/People">People Feed</a></li>
-	                <li><a href = '/{{LinkInOrOut}}' id = "LogInOut">{{InOrOut}}</a></li>
+	                <li class="active"><a href = '/{{LinkInOrOut}}' id = "LogInOut">{{InOrOut}}</a></li>
 	                <li><a href = "/{{RegisterOrProfile}}">{{RegisterOrProfile}}</a></li>
 	              </ul>
 	              <form class="navbar-form navbar-left" role="search">
@@ -66,7 +66,7 @@
  			</div>
  			<span id = "alert">
  			</span>
- 			<form id = "Login" action = "/login" method = 'post' onsubmit = "validateEmailPassword">
+ 			<form id = "Login" action = "/login" method = 'post' onsubmit = "return validateEmailPassword();">
  				<label for = "email">Email:</label>
  				<input type = "text" name = "email" ></input>
  				<label for = "password">Password: </label>
