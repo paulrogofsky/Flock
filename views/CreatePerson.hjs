@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
  	<head>
-		<title>Flock Group Creation</title>
+		<title>Flock Individual Profile Creation</title>
 		<link rel="stylesheet" href="/stylesheets/navbar.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
@@ -63,18 +63,12 @@
 		    </nav>
  		</div>
  		<div>
-	 		<form id = "CreateGroup" action = "/CreateGroup" method = 'post'>
-	 			<label for="GroupName">Group Name:</label>
-	 			<input type = "text" name = "GroupName"></input>
-	 			<input type = "hidden" name = "EventId" value = "{{eventId}}"></input>
-	 			<label for="max_size">What is the maximum size of this group? </label>
-	 			<input type = "text" name = "max_size"></input>
-	 			<label for = "members"> Member names (Please put commas between them):</label>
-	 			<input type = "text" name = "members"></input>
-	 			<input type = "hidden" name = "creator_id" value = "{{creator_id}}"></input>
-	 			<label for = "description">Description of Group: </input>
-	 			<input type = "text" name = "description" width = "100px" height = "200px"></inpu>
- 	 			<input type = "submit"></input>
+	 		<form id = "PersonalProfile" action = "/PersonalProfile" method = 'post'>
+	 			<label for="age">Age:</label>
+	 			<input type = "text" name = "age"></input>
+	 			<label for="gender">Gender:</label>
+	 			<input type = "text" name = "gender"></input>
+				<input type = "submit"></input>
 <!-- 	 			button adder here -->
 	 		</form>
 	 	</div>
