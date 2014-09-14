@@ -3,15 +3,16 @@ var router = express.Router();
 var mongoose = require('mongoose');
 var uuid = require('node-uuid');
 
-router.get('Events/:event_id/Groups', function(req, res) {
-	render(req, res, 'groups');
+router.get('/Events/:event_id/Groups', function(req, res) {
+	console.log(req.params.event_id);
+	render_groups(req, res, req.params.event_id);
 });
 
-router.get('Events/:event_id/Groups/Create', function(req, res) {
+router.get('/Events/:event_id/Groups/Create', function(req, res) {
 	render(req, res, 'CreateGroup');
 });
 
-router.get('Events/:event_id/Groups/:group_id', function(req, res) {
+router.get('/Events/:event_id/Groups/:group_id', function(req, res) {
 	render(req, res, 'group');
 });
 
@@ -102,14 +103,16 @@ function render_groups(req, res, event_id) {
     loginorout = 'Log In';
     linkinorout = 'Login'
   }
+
 	var Event = mongoose.model('event');
 	Event.findOne( { uuid : event_id } , function (err, created_event) {
 		if (err) {
 			console.log(err);
 		} else if (!created_event) {
+			console.log('Could not find event');
 			res.redirect('/Events');
 		}	else {
-			
+			console.log(created_event);
 			var group_ids = created_event.group_id
 
 			Group = mongoose.model('group');
@@ -149,9 +152,10 @@ function render_event(req, res, event_id) {
 		if (err) {
 			console.log(err);
 		} else if (!created_event) {
+			console.log('Could not find event');
 			res.redirect('/Events');
 		}	else {
-			console.log(created_event.tags)
+			console.log('List of tags: ' + created_event.tags)
 			res.render('event', {
 				LinkInOrOut : linkinorout,
 				InOrOut : loginorout,
