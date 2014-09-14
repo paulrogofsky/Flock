@@ -23,8 +23,12 @@ router.get('/Create', function(req, res) {
 	render(req, res, 'Create');
 });
 
+router.get('/Events/:event_id', function (req, res) {
+	render_event(req, res, req.params.event_id);
+});
+
 router.post('/CreateEvent', function(req, res) {
-	var Event = mongoose.model('events');
+	var Event = mongoose.model('event');
 	var created_event = new Event();
 	created_event.name = req.body.EventName;
 	created_event.date = req.body.EventDate;
@@ -40,11 +44,11 @@ router.post('/CreateEvent', function(req, res) {
 
 	created_event.save(function (err, saved) {
 		if (err) {
-			console.log('Error');
+			console.log(err);
 			res.redirect('/')
 		} else {
 			console.log('Saved!');
-			res.redirect('/Events/:event_id')
+			res.redirect('/Events/' + event_id);
 		}
 	});
 });
@@ -56,6 +60,46 @@ router.post('/CreateGroup', function(req, res) {
 router.post('/PersonalProfile', function(req, res) {
 	
 });
+
+function render_event(req, res, event_id) {
+	var id = req.session.user;
+  var registerorprofile;
+  var loginorout;
+  var linkinorout;
+  if (id) {
+    registerorprofile = 'Profile';
+    loginorout = 'Log Out';
+    linkinorout = 'Logout';
+  } else {
+    registerorprofile = 'Register';
+    loginorout = 'Log In';
+    linkinorout = 'Login'
+  }
+	var Event = mongoose.model('event');
+	Event.findOne( { uuid : event_id } , function (err, created_event) {
+		if (err) {
+			console.log(err);
+		} else if (!created_event) {
+			res.redirect('/Events');
+		}	else {
+			res.render('event', {
+				LinkInOrOut : linkinorout,
+				InOrOut : loginorout,
+				RegisterOrProfile : registerorprofile,
+				name : created_event.name,
+				location : created_event.location,
+				date : created_event.date,
+				start : created_event.start_time,
+				end : created_event.end_time,
+				size : created_event.size,
+				description : created_event.description,
+				details : created_event.details,
+				keywords : created_event.tags,
+				groups : created_event.groups
+			});
+		}
+	});
+}
 
 function render(req, res, pagename) {
   var id = req.session.user;
