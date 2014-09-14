@@ -1,6 +1,9 @@
 #Title {text-align:center;}
 
-#Title h4 {font-size:28pt;font-family:"Trebuchet MS", Helvetica, sans-serif;color:red;}
+#Title h4 {font-size:28pt;font-family:"Trebuchet MS", Helvetica, sans-serif;}
 
-.ContentPane {font-family:"Trebuchet MS", Helvetica, sans-serif;}
+.ContentPane {font-family:"Trebuchet MS", Helvetica, sans-serif;margin-left:3px;background-image:url('/images/v.jpg');color:white;font-size:16pt;}
 
+.ContentPane div span{font-size:16pt;}
+
+#AboutUs {font-size:28pt;}

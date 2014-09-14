@@ -63,9 +63,16 @@
 					WELCOME TO FLOCK
 				</h4>
 			</div>
-			<div 
-			<img src = "/images/v.jpg" width = "200" height = "200">
-			</img>
+			<div id = "AboutUs">
+				<h2>
+					About Us
+				</h2>
+				<div>
+					<span>
+						We are a company who's goal is to connect people to people. More specifically, we connect those without groups (or flocks as we call it) to those that are in groups and are welcome to new additions. Most of those times, those groups will be united by a certain event they may be attending.
+					</span>
+				</div>
+			</div>
 			<div>
 				squad deep
 			</div>
