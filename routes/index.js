@@ -53,7 +53,14 @@ router.post('/Login', function (req, res, next) {
 			if (req.body.password === decrypted) {
 				var user_id = user.uuid;
 				req.session.user = user_id;
-				res.redirect('/')
+
+				var redirect = req.session.redirect;
+				req.session.redirect = null;
+				if (!redirect) {
+					res.redirect('/');
+				} else {
+					res.redirect(redirect);
+				}
 			} else {
 				req.session.alert = 'Sorry, that password was incorrect.';
 				res.redirect('/Login');

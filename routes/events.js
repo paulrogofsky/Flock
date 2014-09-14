@@ -9,6 +9,7 @@ router.get('/Events/:event_id/Groups', function(req, res) {
 
 router.get('/Events/:event_id/Groups/Create', function(req, res) {
 	if (!req.session.user) {
+		req.session.redirect = '/Events/' + req.params.event_id + '/Groups/Create';
 		res.redirect('/Login');
 	}
 	render_create_group(req, res, req.params.event_id);
@@ -20,6 +21,7 @@ router.get('/Events/:event_id/Groups/:group_id', function(req, res) {
 
 router.get('/Person/Edit', function(req, res) {
 	if (!req.session.user) {
+		req.session.redirect = '/Person/Edit';
 		res.redirect('/Login');
 	}
 	render(req, res, 'CreatePerson');
@@ -31,6 +33,7 @@ router.get('/Find', function(req, res) {
 
 router.get('/Create', function(req, res) {
 	if (!req.session.user) {
+		req.session.redirect = '/Create';
 		res.redirect('/Login');
 	}
 	render(req, res, 'Create');
@@ -38,6 +41,7 @@ router.get('/Create', function(req, res) {
 
 router.get('/Events/Create',function(req, res) {
 	if (!req.session.user) {
+		req.session.redirect = '/Events/Create';
 		res.redirect('/Login');
 	}
 	render(req, res, 'CreateEvent');

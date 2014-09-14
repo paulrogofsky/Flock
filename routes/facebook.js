@@ -40,6 +40,7 @@ router.get('/facebook', function(req, res) {
   }, function (err, facebookRes) {
     if (err) {
       console.log('Failed authentication');
+      res.session.alert = 'Failed authentication with Facebook';
       res.redirect('/Login');
     } else {
       // Successfully authenticated
@@ -76,7 +77,14 @@ router.get('/facebook', function(req, res) {
     	});
 
       req.session.user = person_id;
-      res.redirect('/');
+      
+      var redirect = req.session.redirect;
+      req.session.redirect = null;
+      if (!redirect) {
+        res.redirect('/');
+      } else {
+        res.redirect(redirect);
+      }
     }
   });
 });
