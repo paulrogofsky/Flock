@@ -20,7 +20,7 @@ router.get('/Events/:event_id/Groups/Create', function(req, res) {
 });
 
 router.get('/Events/:event_id/Groups/:group_id', function(req, res) {
-	render(req, res, 'group');
+	render_group(req, res, req.params.event_id, req.params.group_id);
 });
 
 router.get('/Person/Edit', function(req, res) {
@@ -131,6 +131,58 @@ router.post('/CreateGroup', function(req, res) {
 router.post('/PersonalProfile', function(req, res) {
 	
 });
+
+function render_group(req, res, event_id, group_id) {
+	var id = req.session.user;
+  var registerorprofile;
+  var loginorout;
+  var linkinorout;
+  if (id) {
+    registerorprofile = 'Profile';
+    loginorout = 'Log Out';
+    linkinorout = 'Logout';
+  } else {
+    registerorprofile = 'Register';
+    loginorout = 'Log In';
+    linkinorout = 'Login'
+  }
+
+  var Event = mongoose.model('event');
+	Event.findOne( { uuid : event_id } , function (err, created_event) {
+		if (err) {
+			console.log(err);
+		} else if (!created_event) {
+			res.redirect('/Events/' + event_id);
+		}	else {
+			console.log(created_event);
+			var groups = created_event.groups
+
+			var Group = mongoose.model('event');
+			Group.findOne( { uuid : group_id } , function (err, group) {
+				if (err) {
+					console.log(err);
+				} else {
+					console.log('NEW LINE : ' + group)
+					var Person = mongoose.model('person');
+					Person.findOne( { uuid : group.creator_id } , function (err, creator) {
+						Person.find ( { uuid : { $in: group.member_ids } }, function (err, members) {
+							res.render('group', {
+								LinkInOrOut : linkinorout,
+								InOrOut : loginorout,
+								RegisterOrProfile : registerorprofile,
+								events: created_event,
+								group: group,
+								created_event : created_event,
+								creator : creator,
+								members: members
+							});
+						})
+					});
+				}
+			});
+		}
+	});
+}
 
 function render_groups(req, res, event_id) {
 	var id = req.session.user;

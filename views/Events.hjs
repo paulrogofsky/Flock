@@ -99,7 +99,7 @@
 		 					Description: {{description}} - 
 		 				</span>
 		 				<span>
-		 					<a href="/Events/{{event_id}}//Groups/{{uuid}}">Link</a>
+		 					<a href="/Events/{{event_id}}/Groups/{{uuid}}">Link</a>
 		 				</span>
 		 			</div>
 	 				{{/groups}}

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
  	<head>
- 		<title>Flock Group {{name}} </title>
+ 		<title>Flock Group {{created_event.name}} </title>
 	    <link rel="stylesheet" href="/stylesheets/navbar.css">
 	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 	    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
@@ -59,32 +59,32 @@
 	    </div>
  		<div class = "group">
  			<span>
- 				Name: {{name}}
+ 				Name: {{created_event.name}}
  			</span>
  			<div>
  				<p>
  					Members: 
  				</p>
- 				{{#Members}}
+ 				{{#members}}
  				<span>
-	 				{{Members.first_name}} {{Members.last_name}}
+	 				{{first_name}} {{last_name}}
 	 			</span>
- 				{{/Members}}
+ 				{{/members}}
  			</div>
  			<span>
- 				Max Size: {{max_size}}
+ 				Max Size: {{group.max_size}}
  			</span>
  			<span>
- 				Event: {{Event.id}}
+ 				Event: {{created_event.name}}
  			</span>
  			<span>
- 				Contact: {{Creator.first_name}} {{Creator.last_name}}
+ 				Contact: {{creator.first_name}} {{creator.last_name}}
  			</span>
  			<span>
  				<b>
  					Description: 
  				<b>
- 				{{Description}}
+ 				{{group.description}}
  			</span>
  		</div>
 	</body>
