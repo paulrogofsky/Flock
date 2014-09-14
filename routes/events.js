@@ -7,6 +7,10 @@ router.get('Events/:event_id/Groups/Create', function(req, res) {
 	render(req, res, 'CreateGroup');
 });
 
+router.get('Events/:event_id/Groups/:group_id', function(req, res) {
+	render(req, res, 'group');
+});
+
 router.get('/Person/Edit', function(req, res) {
 	render(req, res, 'CreatePerson');
 });
@@ -62,16 +66,27 @@ router.post('/CreateGroup', function(req, res) {
 	group.event_id = req.body.eventId;
 	group.creator_id = req.body.creator_id;
 	group.description = req.body.description;
-	group.uuid = uuid.v4();
-});
+	var group_uuid = uuid.v4();
+	group.uuid = group_uuid;
 
-router.post('/CreateGroup', function(req, res) {
-	
+	group.save(function (err, saved) {
+		if (err) {
+			console.log(err);
+			res.redirect('/');
+		} else {
+			console.log('Saved!');
+			res.redirect('/Events/' + req.body.eventId + '/Group/' + group_uuid);
+		}
+	});
 });
 
 router.post('/PersonalProfile', function(req, res) {
 	
 });
+
+function render_group(req, res, group_id) {
+
+}
 
 function render_event(req, res, event_id) {
 	var id = req.session.user;
@@ -94,6 +109,7 @@ function render_event(req, res, event_id) {
 		} else if (!created_event) {
 			res.redirect('/Events');
 		}	else {
+			console.log(created_event.tags)
 			res.render('event', {
 				LinkInOrOut : linkinorout,
 				InOrOut : loginorout,
