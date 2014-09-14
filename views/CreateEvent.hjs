@@ -83,7 +83,7 @@
 		 			<input type = "text" name = "size"></input>
 		 			<label for="tags">Event Tag Queries (Place a space between each): </label>
 		 			<input type = "text" name = "tags"></input>
-		 			<label for="details">Event Description: </label>
+		 			<label for="description">Event Description: </label>
 		 			<input type = "text" name = "description"></input>
 		 			<label for="details">Event Details: </label>
 		 			<input type = "text" name = "details"></input>
