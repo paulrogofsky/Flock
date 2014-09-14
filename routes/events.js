@@ -4,12 +4,11 @@ var mongoose = require('mongoose');
 var uuid = require('node-uuid');
 
 router.get('/Events/:event_id/Groups', function(req, res) {
-	console.log(req.params.event_id);
 	render_groups(req, res, req.params.event_id);
 });
 
 router.get('/Events/:event_id/Groups/Create', function(req, res) {
-	render(req, res, 'CreateGroup');
+	render_create_group(req, res, req.params.event_id);
 });
 
 router.get('/Events/:event_id/Groups/:group_id', function(req, res) {
@@ -68,7 +67,7 @@ router.post('/CreateGroup', function(req, res) {
 	group.name = req.body.GroupName;
 	group.member_ids = req.body.members;
 	group.max_size = req.body.max_size;
-	group.event_id = req.body.eventId;
+	group.event_id = req.body.EventId;
 	group.creator_id = req.body.creator_id;
 	group.description = req.body.description;
 	var group_uuid = uuid.v4();
@@ -80,7 +79,7 @@ router.post('/CreateGroup', function(req, res) {
 			res.redirect('/');
 		} else {
 			console.log('Saved!');
-			res.redirect('/Events/' + req.body.eventId + '/Group/' + group_uuid);
+			res.redirect('/Events/' + req.body.EventId + '/Group/' + group_uuid);
 		}
 	});
 });
@@ -174,6 +173,41 @@ function render_event(req, res, event_id) {
 			});
 		}
 	});
+}
+
+function render_create_group(req, res, event_id) {
+	var id = req.session.user;
+  var registerorprofile;
+  var loginorout;
+  var linkinorout;
+  if (id) {
+    registerorprofile = 'Profile';
+    loginorout = 'Log Out';
+    linkinorout = 'Logout';
+  } else {
+    registerorprofile = 'Register';
+    loginorout = 'Log In';
+    linkinorout = 'Login'
+  }
+
+  var Person = mongoose.model('person');
+  Person.findOne( { uuid : id } , function (err, user) {
+  	if (err) {
+  		console.log(err);
+  	} else if (!user) {
+  		console.log('No user signed in');
+  		res.session.alert = 'You need to be signed in to do that.';
+  		res.redirect('/Login');
+  	} else {
+  		res.render('CreateGroup', {
+  			LinkInOrOut : linkinorout,
+				InOrOut : loginorout,
+				RegisterOrProfile : registerorprofile,
+				creator_id : user._id,
+				eventId : event_id
+  		});
+  	}
+  })
 }
 
 function render(req, res, pagename) {
