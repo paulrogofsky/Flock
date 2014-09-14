@@ -80,13 +80,6 @@
 			        <li><a href="/CreatePerson">Person</a></li>
 			    </ul>
 			</div>
-<!-- 	    	<div class = "dropdown">
-				<ul class="dropdown-menu" role="menu" id = "rankSubMenu">
-					<li><a href="/CreateEvent">Group</a></li>
-					<li><a href="/CreateGroup">Event</a></li>
-					<li><a href="/CreatePerson">Person</a></li>
-				</ul>
-			</div> -->
 	    </div>
 	</body>
 </html>
