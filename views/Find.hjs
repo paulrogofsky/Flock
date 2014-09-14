@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
  	<head>
-		<title>Flock Create Items</title>
+		<title>Flock Find Items</title>
 		<link rel="stylesheet" href="/stylesheets/navbar.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
@@ -12,6 +12,8 @@
 	    	form label {display:block;margin-left:15px;}
 	    	form input {display:block;margin-left:15px;margin-bottom:15px;}
 	    	#btn223 {padding-left:50px;padding-right:50px;margin-left:20px;margin-top:10px;}
+	    	form select {margin-left:15px;width:300px;}
+	    	body {color:white;}
 	    </style>
  	</head>
  	<body>
@@ -66,19 +68,24 @@
 	    <div class = "RedirectProcessor">
 	    	<div class = "instructions">
 	    		<span>
-	    			We would like to redirect you to our various creation pages. 
+	    			We would like to help you find some groups you are looking for
 	    		</span>
 	    		<span>
-	    			Please indicate below where you would like to be redirected to
+	    			Fill out the fields for an optimal search page.
 	    		</span>
 	    	</div>
-	    	<div class="btn-group">
-			    <button type="button" data-toggle="dropdown" class="btn btn-default dropdown-toggle" id = "btn223">Choices <span class="caret"></span></button>
-			    <ul class="dropdown-menu">
-			        <li><a href="/Events/Create">Event</a></li>
-			        <li><a href="/">Group</a></li>
-			        <li><a href="/CreatePerson">Person</a></li>
-			    </ul>
+	    	<div>
+	    		<form id = "Choose" action = "/query" method = "post">
+	    			<select name = "option">
+	    				<option value = "Event" onclick = "changeFields(this)">Event</option>
+	    				<option value = "Person" onclick = "changeFields(this)">Person</option>
+	    				<option value = "Group" onclick = "changeFields(this)">Group</option>
+	    			</select>
+	    			<label for = "FirstName">First Name: </label>
+	    			<input type = "text" name = "FirstName"></input>
+	    			<label for = "LastName">Last Name: </label>
+	    			<input type = "text" name = "LastName"></input>
+	    		</form>
 			</div>
 	    </div>
 	</body>

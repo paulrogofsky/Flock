@@ -3,14 +3,12 @@
     background: rgba(0,0,0, 0.5);overflow:hidden;
 }
 
-body > span 
-
-body {background-image:url('/images/congruent_outline.png')}
-
 .event div {font-size:17pt;position:relative;overflow:visible;}
 
 .event .BIG .TRIG {margin-left:15px;font-size:32pt; color:red;}
 
 .event div span {font-size:16pt;}
 
-#CreateGroup {display:none;}
+#CreateGroup {display:none; position:relative; top:0px;overflow:visible;}
+
+#CreateGroup2 input {position:relative; top:0px;color:black;}

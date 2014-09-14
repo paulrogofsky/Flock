@@ -8,6 +8,19 @@
 	    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 	    <link rel="stylesheet" href = "/stylesheets/content.css">
 	    <link rel = "stylesheet" href="/stylesheets/events.css">
+	    <script type = "text/javascript">
+	    	function changeVisibility (elmt) {
+	    		if (document.getElementById('CreateGroup').style.display == '') {
+	    			document.getElementById('CreateGroup').style.display = 'block';
+	    			elmt.checked = true;
+	    		}
+	    		else {
+	    			document.getElementById('CreateGroup').style.display = '';
+	    			elmt.checked = false;
+	    		}
+
+	    	}
+	    </script>
  	</head>
  	<body>
     	<div>
@@ -103,12 +116,30 @@
 		 				</span>
 		 			</div>
 	 				{{/groups}}
-					<span>
-	 					<a href = "/Events/{{uuid}}/groups/create">CREATE GROUP</a>
-	 				</span>
 	 			</div>
-	 		</span>	 		
+				<div>
+ 					<form>
+						<input type="checkbox" name = "AddGroup" onclick="changeVisibility(this);">Add Group</input>
+					</form>
+ 				</div>
+		 		<div id = "CreateGroup">
+			 		<form id = "CreateGroup2" action = "/CreateGroup" method = 'post'>
+			 			<label for="GroupName">Group Name:</label>
+			 			<input type = "text" name = "GroupName" onmouseclick = "this.focus();"></input>
+			 			<input type = "hidden" name = "EventId" value = "{{event_id}}"></input>
+			 			<label for="max_size">What is the maximum size of this group? </label>
+			 			<input type = "text" name = "max_size"></input>
+			 			<label for = "members"> Member names (Please put commas between them):</label>
+			 			<input type = "text" name = "members"></input>
+			 			<label for = "description"> Description of Group: </label>
+			 			<input type = "text" name = "description" width = "100px" height = "200px"></input>
+		 	 			<input type = "submit" class = "btn"></input>
+		<!-- 	 			button adder here -->
+		 			</form> 				
+				</div>	
+ 			</span>	
  			{{/events}}
+
 	 	</div>
 	</body>
 </html>

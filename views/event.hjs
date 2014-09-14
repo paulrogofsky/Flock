@@ -115,7 +115,7 @@
 					</form>
  				</div>
  			</div>
-	 		<span id = "CreateGroup">
+	 		<div id = "CreateGroup">
 		 		<form id = "CreateGroup2" action = "/CreateGroup" method = 'post'>
 		 			<label for="GroupName">Group Name:</label>
 		 			<input type = "text" name = "GroupName" onmouseclick = "this.focus();"></input>
@@ -129,7 +129,7 @@
 	 	 			<input type = "submit" class = "btn"></input>
 	<!-- 	 			button adder here -->
 	 			</form> 				
-			</span>
+			</div>
  		</span>
 	</body>
 </html>
