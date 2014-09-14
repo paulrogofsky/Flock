@@ -1,7 +1,7 @@
 var express = require('express');
-var session = require('session');
 var mongoose = require('mongoose');
 var router = express.Router();
+var uuid = require('node-uuid');
 
 var graph = require('fbgraph');
 
@@ -38,37 +38,61 @@ router.get('/facebook', function(req, res) {
       "client_secret":  conf.client_secret,
       "code":           req.query.code
   }, function (err, facebookRes) {
-  	graph.get('/me', function(err, data) {
+    if (err) {
+      console.log('Failed authentication');
+      res.redirect('/Login');
+    } else {
+      // Successfully authenticated
+      var person_id = uuid.v4();
 
-  		var Person = mongoose.model('person');
-  		var fb_person = new Person();
-		  		fb_person.first_name = data.first_name;
-		  		fb_person.last_name = data.last_name;
-		  		fb_person.facebook = data.id;
+    	graph.get('/me', function(err, data) {
 
-  		Person.find( { facebook : data.id } , function (err, user) {
-  			if (user.length == 0) { 
-  				console.log(fb_person);
-		  		fb_person.save(function (err, saved) {
-		  			if (!err) {
-		  				console.log('Saved!');
-		  			} else {
-		  				console.log('Error!');
-		  			}
-	  			});
-  			};
-  		});
+    		var Person = mongoose.model('person');
+    		var fb_person = new Person();
+  		  		fb_person.first_name = data.first_name;
+  		  		fb_person.last_name = data.last_name;
+  		  		fb_person.facebook = data.id;
+            fb_person.uuid = person_id;
 
-  	});
-    res.redirect('/Home');
+    		Person.find( { facebook : data.id } , function (err, user) {
+    			if (user.length == 0) { 
+  		  		fb_person.save(function (err, saved) {
+  		  			if (!err) {
+  		  				console.log('Saved!');
+  		  			} else {
+  		  				console.log('Error!');
+  		  			}
+  	  			});
+    			};
+    		});        
+    	});
+
+      req.session.user = person_id;
+      res.redirect('/');
+    }
   });
 });
 
 // user gets sent here after being authorized
 router.get('/Home', function(req, res) {
 	graph.get('/me', function (err, data) {
+    req.session.
 	 	res.send("Hi " + data.first_name + " " + data.last_name);
 	});
 });
+
+function render(req, res, pagename) {
+  var id = req.session.user;
+  var registerorprofile;
+  var loginorout;
+  if (id) {
+    registerorprofile = 'Profile';
+    loginorout = 'Log Out';
+  } else {
+    registerorprofile = 'Register';
+    loginorout = 'Log In';
+  }
+  res.render(pagename, { InOrOut : loginorout, RegisterOrProfile : registerorprofile });
+}
 
 module.exports = router;

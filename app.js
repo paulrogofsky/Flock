@@ -6,6 +6,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var session = require('cookie-session');
 
+
 var facebook = require('./routes/facebook');
 var events = require('./routes/events');
 var routes = require('./routes/index');
@@ -30,7 +31,8 @@ mongoose.model('person', {
   age: Number,
   events_gone: [String],
   events_going: [String],
-  facebook: String
+  facebook: String,
+  uuid: String
 });
 
 mongoose.model('event', {
@@ -64,6 +66,7 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(session({secret: 'theflockteam'}));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', events);

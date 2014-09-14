@@ -1,6 +1,7 @@
 var express = require('express');
 var mailer = require('../mailer');
 var mongoose = require('mongoose');
+
 var crypto = require("crypto");
 var router = express.Router();
 
@@ -10,27 +11,28 @@ var cipher = crypto.createCipher(algorithm, key);
 
 /* GET home page. */
 router.get('/', function(req, res) {
-  res.render('index');
+	render(req, res, 'index');
 });
 
 router.get('/Login', function(req, res) {
-	res.render('login');
+	render(req, res, 'login');
+	console.log('The session user id is ' + req.session.user);
 });
 
 router.get('/Register', function(req, res) {
-	res.render('Register')
+	render(req, res, 'Register');
 });
 
 router.get('/Navbar', function(req,res){
-	res.render('navbar')
+	render(req, res, 'navbar')
 });
 
 router.get('/Person', function(req,res) {
-	res.render('person');
+	render(req, res, 'person');
 })
 
 router.get('/Navbar1',function(req,res){
-	res.render('navbar1.hjs')
+	render(req, res, 'navbar1.hjs')
 });
 
 router.post('/RegisterNow', function(req, res, next) {
@@ -131,6 +133,21 @@ function makeid()
         text += possible.charAt(Math.floor(Math.random() * possible.length));
 
     return text;
+}
+
+function render(req, res, pagename) {
+	var id = req.session.user;
+	console.log(id);
+	var registerorprofile;
+	var loginorout;
+	if (id) {
+		registerorprofile = 'Profile';
+		loginorout = 'Log Out';
+	} else {
+		registerorprofile = 'Register';
+		loginorout = 'Log In';
+	}
+  res.render(pagename, { InOrOut : loginorout, RegisterOrProfile : registerorprofile });
 }
 
 module.exports = router;
