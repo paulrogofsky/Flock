@@ -93,10 +93,10 @@
 	 				{{#groups}}
 	 				<div>
 		 				<span>
-		 					Name: {{name}} -
+		 					<b>Name:</b> {{name}} -
 		 				</span> 
 		 				<span>
-		 					Description: {{description}} - 
+		 					<b>Description:</b> {{description}} - 
 		 				</span>
 		 				<span>
 		 					<a href="/Events/{{event_id}}/Groups/{{uuid}}">Link</a>
