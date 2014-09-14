@@ -3,6 +3,10 @@ var router = express.Router();
 var mongoose = require('mongoose');
 var uuid = require('node-uuid');
 
+router.get('/Events', function (req, res) {
+	render_events(req, res);
+})
+
 router.get('/Events/:event_id/Groups', function(req, res) {
 	render_groups(req, res, req.params.event_id);
 });
@@ -205,6 +209,32 @@ function render_event(req, res, event_id) {
 			});
 		}
 	});
+}
+
+function render_events(req, res) {
+	var id = req.session.user;
+  var registerorprofile;
+  var loginorout;
+  var linkinorout;
+  if (id) {
+    registerorprofile = 'Profile';
+    loginorout = 'Log Out';
+    linkinorout = 'Logout';
+  } else {
+    registerorprofile = 'Register';
+    loginorout = 'Log In';
+    linkinorout = 'Login'
+  }
+
+  var Event = mongoose.model('event');
+  Event.find( { } , function (err, events) {
+  	res.render('Events', {
+  		LinkInOrOut : linkinorout,
+			InOrOut : loginorout,
+			RegisterOrProfile : registerorprofile,
+			events : events
+  	});
+  });
 }
 
 function render_create_group(req, res, event_id) {

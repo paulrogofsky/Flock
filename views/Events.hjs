@@ -71,13 +71,13 @@
 	 				<b>Date:</b> <span>{{date}}</span>
 	 			</div>
 	 			<div>
-	 				<b>Time Start:</b> <span>{{start}}</span>
+	 				<b>Time Start:</b> <span>{{start_time}}</span>
 	 			</div>
 	 			<div>
-	 				<b>Time End:</b> <span>{{end}}</span>
+	 				<b>Time End:</b> <span>{{end_time}}</span>
 	 			</div>
 	 			<div>
-	 				<b>Max People:</b> <span>{{size}}</span>
+	 				<b>Max People:</b> <span>{{max_size}}</span>
 	 			</div>
 	 			<div>
 	 				<b>Description:</b> <span>{{description}}</span>
@@ -86,7 +86,7 @@
 	 				<b>Details:</b> <span>{{details}}</span>
 	 			</div>
 	 			<div>
-	 				<b>Keywords:</b> <span>{{keywords}}</span>
+	 				<b>Keywords:</b> <span>{{tags}}</span>
 	 			</div>
 	 			<div>
 	 				<b>Groups:</b> {{#groups}}
