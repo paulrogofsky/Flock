@@ -1,11 +1,11 @@
-.event {display:block;background-color:black;border-style:solid;border-radius:25px;border-width:5px;border-color:red;text-align:center;margin-left:auto;margin-right:auto;color:white;z-index:-5;
+.event {display:block;background-color:black;border-style:solid;border-radius:25px;border-width:5px;border-color:red;text-align:center;margin-left:auto;margin-right:auto;color:white;
     position:relative;
     background: rgba(0,0,0, 0.5);
 }
 
-body {background-image:url('/images/congruent_outline.png');}
+body {background-image:url('/images/congruent_outline.png')}
 
-.event div {font-size:17pt;position:relative;}
+.event div {font-size:17pt;position:relative;overflow:visible;}
 
 .event .BIG .TRIG {margin-left:15px;font-size:32pt; color:red;}
 

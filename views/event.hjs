@@ -58,8 +58,6 @@
 	        </nav>
 	    </div>
  		<span class = "event">
- 			<div class = "background">
- 			</div>
  			<div class = "BIG">
  				<b class = "TRIG">{{name}}</b> 
  			</div>
@@ -91,16 +89,16 @@
  				<b>Groups:</b> {{#groups}}
  				<div>
 	 				<span>
-	 					{{name}}
+	 					{{groups.name}}
 	 				</span>, 
 	 				<span>
-	 					{{max_size}}
-	 				</span>
-	 				<span>
-	 					<a href = "/Events/{{id}}/groups/create">CREATE GROUP</a>
+	 					{{groups.max_size}}
 	 				</span>
 	 			</div>
  				{{/groups}}
+				<span>
+ 					<a href = "/Events/{{event_id}}/groups/create">CREATE GROUP</a>
+ 				</span>
  			</div>
  		</span>
 	</body>
