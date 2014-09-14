@@ -57,47 +57,49 @@
 	          </div><!-- /.container-fluid -->
 	        </nav>
 	    </div>
- 		<div class = "event">
- 			<div>
- 				<b>Name:</b> {{name}}
+ 		<span class = "event">
+ 			<div class = "BIG">
+ 				<b class = "TRIG">{{name}}</b> 
  			</div>
  			<div>
- 				<b>Location:</b> {{location}}
+ 				<b>Location:</b> <span>{{location}}</span>
  			</div>
  			<div>
- 				<b>Date:</b> {{date}}
+ 				<b>Date:</b> <span>{{date}}</span>
  			</div>
  			<div>
- 				<b>Time Start:</b> {{start}}
+ 				<b>Time Start:</b> <span>{{start}}</span>
  			</div>
  			<div>
- 				<b>Time End:</b> {{end}}
+ 				<b>Time End:</b> <span>{{end}}</span>
  			</div>
  			<div>
- 				<b>Max People:</b> {{size}}
+ 				<b>Max People:</b> <span>{{size}}</span>
  			</div>
  			<div>
- 				<b>Description:</b> {{description}}
+ 				<b>Description:</b> <span>{{description}}</span>
  			</div>
  			<div>
- 				<b>Details:</b> {{details}}
+ 				<b>Details:</b> <span>{{details}}</span>
  			</div>
  			<div>
- 				<b>Keywords:</b> {{keywords}}
+ 				<b>Keywords:</b> <span>{{keywords}}</span>
  			</div>
  			<div>
  				<b>Groups:</b> {{#groups}}
- 				<span>
- 					{{groups.name}}
- 				</span>, 
- 				<span>
- 					{{groups.max_size}}
- 				</span>
- 				<span>
- 					<a href = "/Events/{{id}}/groups/create">CREATE GROUP</a>
- 				</span>
+ 				<div>
+	 				<span>
+	 					{{groups.name}}
+	 				</span>, 
+	 				<span>
+	 					{{groups.max_size}}
+	 				</span>
+	 				<span>
+	 					<a href = "/Events/{{id}}/groups/create">CREATE GROUP</a>
+	 				</span>
+	 			</div>
  				{{/groups}}
  			</div>
- 		</div>
+ 		</span>
 	</body>
 </html>

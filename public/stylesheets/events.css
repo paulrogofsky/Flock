@@ -1,3 +1,9 @@
-.event {display:block;}
+.event {display:block;background-color:yellow;border-style:solid;border-radius:25px;border-width:5px;border-color:red;margin-right:1200px;background-image:url('/images/images.jpg');color:white;}
 
-.event div {text-align:center;}
+body {background-image:url('/images/bricks.jpg');}
+
+.event div b {font-size:17pt;}
+
+.event .BIG .TRIG {margin-left:15px;font-size:32pt; color:blue;}
+
+.event div span {font-size:16pt;}

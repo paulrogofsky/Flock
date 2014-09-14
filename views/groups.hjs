@@ -78,38 +78,38 @@
  			{{#groups}}
  			<div id = "group-{{groups.id}}">
 	 			<span>
-	 				Name: {{groups.name}}
+	 				Name: {{name}}
 	 			</span>
 	 			<span>
-	 				Location: {{groups.location}}
+	 				Location: {{location}}
 	 			</span>
 	 			<span>
-	 				Date: {{groups.date}}
+	 				Date: {{date}}
 	 			</span>
 	 			<span>
-	 				Time Start: {{groups.start}}
+	 				Time Start: {{start}}
 	 			</span>
 	 			<span>
-	 				Time End: {{groups.end}}
+	 				Time End: {{end}}
 	 			</span>
 	 			<span>
-	 				Max People: {{groups.max_size}}
+	 				Max People: {{gmax_size}}
 	 			</span>
 	 			<span>
-	 				Description: {{groups.description}}
+	 				Description: {{description}}
 	 			</span>
 	 			<span>
-	 				Details: {{groups.details}}
+	 				Details: {{details}}
 	 			</span>
 	 			<span>
-	 				Keywords: {{#groups.keywords}}
+	 				Keywords: {{#keywords}}
 					<p>
-						{{groups.keywords}}
+						{{keywords}}
 					</p>
-					{{/groups.keywords}}
+					{{/keywords}}
 	 			</span>
 	 			<span>
-	 				Contact Person: {{groups.creator.name}}
+	 				Contact Person: {{creator.name}}
 	 			</span>
 	 		</div>
 	 		{{/groups}}
