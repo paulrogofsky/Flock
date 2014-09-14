@@ -4,6 +4,6 @@
 
 .ContentPane {font-family:"Trebuchet MS", Helvetica, sans-serif;margin-left:3px;background-image:url('/images/v.jpg');color:white;font-size:16pt;}
 
-.ContentPane div span{font-size:16pt;}
+.ContentPane div div {font-size:16pt;text-indent:15px;}
 
-#AboutUs {font-size:28pt;}
+#AboutUs,#Useful {font-size:28pt;}
