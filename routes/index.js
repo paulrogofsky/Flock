@@ -35,7 +35,7 @@ router.get('/Logout', function(req, res) {
 	console.log(req.session.user);
 	req.session.user = null;
 	console.log(req.session.user);
-	res.redirect('/');
+	res.redirect('/Login');
 })
 
 router.post('/Login', function (req, res, next) {

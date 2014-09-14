@@ -63,7 +63,15 @@ router.get('/facebook', function(req, res) {
   		  				console.log('Error!');
   		  			}
   	  			});
-    			}
+    			} else {
+            Person.update ( { facebook : user[0].facebook }, { uuid : person_id }, function (err, user) {
+              if (err) {
+                console.log(err);
+              } else {
+                console.log('Success!');
+              }
+            });
+          }
     		});        
     	});
 
