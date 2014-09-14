@@ -64,6 +64,8 @@
 	 		<h4>
 	 			REGISTRATION PAGE
 	 		</h4>
+	 		<span id = "alert">
+		 	</span>
 	 		<div class = "Email">
 	 			<div id = "RegisterFirst">
 		 			<span>
@@ -74,9 +76,7 @@
 		 					We will send you an email with a pin.
 		 				</p>
 		 			</span>
-		 			<span id = "alert">
-		 			</span>
-			 		<form id = "Register1" action = "/RegisterNow" method = 'post' onsubmit = "validateEmailNames(this)">
+			 		<form id = "Register1" action = "/RegisterNow" method = 'post' onsubmit = "return validateEmailNames(this);">
 			 			<label for="email">Email:</label>
 			 			<input type = "text" name = "email"></input>
 			 			<label for="FirstName">First Name:</label>
@@ -92,7 +92,7 @@
 			 				If you already registered and received an email with your pin, please enter your email below and we will redirect you to the confirmation page.
 			 			</p>
 			 		</span>
-			 		<form id = "Register2" action = "/RegisterAgain" method = 'post' onsubmit = "validateEmail(this)">
+			 		<form id = "Register2" action = "/RegisterAgain" method = 'post' onsubmit = "return validateEmail(this)">
 			 			<label for="email">Email:</label>
 			 			<input type = "text" name = "email"></input>
 			 			<input type = "submit" class = "btn"></input>
