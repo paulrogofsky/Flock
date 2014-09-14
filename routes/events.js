@@ -244,7 +244,7 @@ function render_event(req, res, event_id) {
 			res.redirect('/Events');
 		}	else {
 			console.log('List of tags: ' + created_event.tags)
-			res.render('event', {
+			parameters = {
 				LinkInOrOut : linkinorout,
 				InOrOut : loginorout,
 				RegisterOrProfile : registerorprofile,
@@ -260,7 +260,12 @@ function render_event(req, res, event_id) {
 				groups : created_event.groups,
 				event_id : event_id,
 				create_link : 'Events/' + event_id + '/Groups/Create'
-			});
+			}
+
+			if (req.session.user) {
+				parameters.logged_in = true;
+			}
+			res.render('event', parameters);
 		}
 	});
 }
@@ -283,12 +288,18 @@ function render_events(req, res) {
   var Event = mongoose.model('event');
   Event.find( { } , function (err, events) {
   	var Group = mongoose.model('group');
-  	res.render('Events', {
+  	var parameters = {
 	  		LinkInOrOut : linkinorout,
 				InOrOut : loginorout,
 				RegisterOrProfile : registerorprofile,
-				events : events
-  		});
+				events : events,
+  	}
+
+  	if (req.session.user) {
+  		parameters.logged_in = true
+  	}
+
+  	res.render('Events', parameters);
   });
 }
 
