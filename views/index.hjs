@@ -58,23 +58,26 @@
 	        </nav>
 	    </div>
 		<div class = "ContentPane">
-			<div id = "Title">
+			<span id = "Title">
 				<h4>
 					WELCOME TO FLOCK
 				</h4>
-			</div>
+			</span>
 			<div id = "AboutUs">
 				<h2>
 					About Us
 				</h2>
 				<div>
-					<span>
-						We are a company who's goal is to connect people to people. More specifically, we connect those without groups (or flocks as we call it) to those that are in groups and are welcome to new additions. Most of those times, those groups will be united by a certain event they may be attending.
-					</span>
+					We are a company who's goal is to connect people to people. More specifically, we connect those without groups (or flocks as we call it) to those that are in groups and are welcome to new additions. Most of those times, those groups will be united by a certain event they may be attending.
 				</div>
 			</div>
-			<div>
-				squad deep
+			<div id = "Useful">
+				<h2>
+					Why You Should Use Us?
+				</h2>
+				<div>
+					If you are ever in need of joining a group, this is the website to go to. Let's say you want to go to a concert. 
+				</div>
 			</div>
 		</div>	
 	</body>
