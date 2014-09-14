@@ -44,7 +44,9 @@ mongoose.model('event', {
   description: String,
   details: String,
   tags: [String],
-  group_id: [String]
+  group_id: [String],
+  size: String, 
+  uuid: String
 });
 
 mongoose.model('group', {
@@ -53,7 +55,8 @@ mongoose.model('group', {
   max_size: Number,
   event_id: String,
   creator_id: String,
-  description: String
+  description: String,
+  uuid: String
 });
 
 // view engine setup

@@ -1,13 +1,10 @@
 var express = require('express');
 var mailer = require('../mailer');
 var mongoose = require('mongoose');
+var uuid = require('node-uuid');
 
 var crypto = require("crypto");
 var router = express.Router();
-
-var algorithm = 'aes256';
-var key = 'theflockteam';
-var cipher = crypto.createCipher(algorithm, key);
 
 /* GET home page. */
 router.get('/', function(req, res) {
@@ -16,23 +13,46 @@ router.get('/', function(req, res) {
 
 router.get('/Login', function(req, res) {
 	render(req, res, 'login');
-	console.log('The session user id is ' + req.session.user);
 });
 
 router.get('/Register', function(req, res) {
 	render(req, res, 'Register');
 });
 
-router.get('/Navbar', function(req,res){
+router.get('/Navbar', function(req, res){
 	render(req, res, 'navbar')
 });
 
-router.get('/Person', function(req,res) {
+router.get('/Person', function(req, res) {
 	render(req, res, 'person');
 })
 
-router.get('/Navbar1',function(req,res){
+router.get('/Navbar1', function(req, res){
 	render(req, res, 'navbar1.hjs')
+});
+
+router.get('/Logout', function(req, res) {
+	req.session.user = null;
+	res.redirect('/');
+})
+
+router.post('/Login', function (req, res, next) {
+	var Person = mongoose.model('person');
+	Person.findOne( { email : req.body.email } , function(err, user) {
+		if (err) {
+			console.log('Could not update');
+		} else if (!user) {
+			res.redirect('/Login');
+		}	else {
+			var encrypted = user.password;
+			if (user.password === decrypt(encrypted)) {
+				var user_id = user.uuid;
+				req.session.user = user_id;
+			} else {
+				res.redirect('/Login');
+			}
+		}
+	});
 });
 
 router.post('/RegisterNow', function(req, res, next) {
@@ -76,15 +96,17 @@ router.post('/ConfirmRegister', function (req, res, next) {
 	var Person = mongoose.model('person');
 	Person.findOne( { email : req.body.email } , function(err, user) {
 		if ( user.pin === req.body.Pin ) {
+			var user_id = uuid.v4();
 			var password = req.body.Password;
-			var encrypted = cipher.update(password, 'utf8', 'hex') + cipher.final('hex');
-			Person.findOneAndUpdate( { email : req.body.email }, { password: encrypted }, function(err, data) {
+			var encrypted = encrypt(password);
+			Person.findOneAndUpdate( { email : req.body.email }, { password: encrypted, uuid : user_id }, function(err, data) {
 				if (err) {
 					console.log('Could not update');
 				} else {
 					console.log('Saved!');
 				}
 			});
+			req.session.user = user_id;
 		}
 	});
 	res.redirect('/Home');
@@ -148,6 +170,20 @@ function render(req, res, pagename) {
 		loginorout = 'Log In';
 	}
   res.render(pagename, { InOrOut : loginorout, RegisterOrProfile : registerorprofile });
+}
+
+function encrypt(text){
+  var cipher = crypto.createCipher('aes-256-cbc','d6F3Efeq')
+  var crypted = cipher.update(text,'utf8','hex')
+  crypted += cipher.final('hex');
+  return crypted;
+}
+ 
+function decrypt(text){
+  var decipher = crypto.createDecipher('aes-256-cbc','d6F3Efeq')
+  var dec = decipher.update(text,'hex','utf8')
+  dec += decipher.final('utf8');
+  return dec;
 }
 
 module.exports = router;
