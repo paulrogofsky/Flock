@@ -92,10 +92,10 @@
  			<div>
  				Groups {{#groups}}
  				<span>
- 					{{group.name}}
+ 					{{groups.name}}
  				</span>
  				<span>
- 					{{group.max_size}}
+ 					{{groups.max_size}}
  				</span>
  				{{/groups}}
  			</div>
