@@ -3,11 +3,7 @@ var router = express.Router();
 var mongoose = require('mongoose');
 var uuid = require('node-uuid');
 
-router.get('/Events/Create',function(req, res) {
-	render(req, res, 'CreateEvent');
-});
-
-router.get('/Groups/Create', function(req, res) {
+router.get('Events/:event_id/Groups/Create', function(req, res) {
 	render(req, res, 'CreateGroup');
 });
 
@@ -21,6 +17,10 @@ router.get('/Events/Find', function(req, res) {
 
 router.get('/Create', function(req, res) {
 	render(req, res, 'Create');
+});
+
+router.get('/Events/Create',function(req, res) {
+	render(req, res, 'CreateEvent');
 });
 
 router.get('/Events/:event_id', function (req, res) {

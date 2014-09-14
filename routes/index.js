@@ -47,9 +47,11 @@ router.post('/Login', function (req, res, next) {
 			res.redirect('/Login');
 		}	else {
 			var encrypted = user.password;
-			if (user.password === decrypt(encrypted)) {
+			var decrypted = decrypt(encrypted);
+			if (req.body.password === decrypted) {
 				var user_id = user.uuid;
 				req.session.user = user_id;
+				res.redirect('/')
 			} else {
 				res.redirect('/Login');
 			}
@@ -96,12 +98,13 @@ router.post('/RegisterNow', function(req, res, next) {
 
 router.post('/ConfirmRegister', function (req, res, next) {
 	var Person = mongoose.model('person');
-	Person.findOne( { email : req.body.email } , function(err, user) {
+	Person.findOne( { email : req.body.Email } , function(err, user) {
+		console.log(user);
 		if ( user.pin === req.body.Pin ) {
 			var user_id = uuid.v4();
 			var password = req.body.Password;
 			var encrypted = encrypt(password);
-			Person.findOneAndUpdate( { email : req.body.email }, { password: encrypted, uuid : user_id }, function(err, data) {
+			Person.findOneAndUpdate( { email : user.email, pin : user.pin }, { password: encrypted, uuid : user_id }, function(err, data) {
 				if (err) {
 					console.log('Could not update');
 				} else {
@@ -109,6 +112,8 @@ router.post('/ConfirmRegister', function (req, res, next) {
 				}
 			});
 			req.session.user = user_id;
+		} else {
+			console.log('That pin is incorrect' + user.pin + ' vs. ' + req.body.Pin);
 		}
 	});
 	res.redirect('/');
