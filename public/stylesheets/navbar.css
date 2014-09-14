@@ -4,6 +4,8 @@ nav {font-size:16pt;}
 min-height: 60px;
 }
 
-#NavItems li a {padding-right:50px;}
+#NavItems li {display:inline-block;}
 
-#FLOCK {position:relative;bottom:15px}
+#NavItems li a {padding-left:25px;padding-right:25px;}
+
+#FLOCK {position:relative;bottom:12px}
