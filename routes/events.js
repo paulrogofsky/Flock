@@ -3,6 +3,10 @@ var router = express.Router();
 var mongoose = require('mongoose');
 var uuid = require('node-uuid');
 
+router.get('Events/:event_id/Groups', function(req, res) {
+	render(req, res, 'groups');
+});
+
 router.get('Events/:event_id/Groups/Create', function(req, res) {
 	render(req, res, 'CreateGroup');
 });
@@ -84,8 +88,46 @@ router.post('/PersonalProfile', function(req, res) {
 	
 });
 
-function render_group(req, res, group_id) {
+function render_groups(req, res, event_id) {
+	var id = req.session.user;
+  var registerorprofile;
+  var loginorout;
+  var linkinorout;
+  if (id) {
+    registerorprofile = 'Profile';
+    loginorout = 'Log Out';
+    linkinorout = 'Logout';
+  } else {
+    registerorprofile = 'Register';
+    loginorout = 'Log In';
+    linkinorout = 'Login'
+  }
+	var Event = mongoose.model('event');
+	Event.findOne( { uuid : event_id } , function (err, created_event) {
+		if (err) {
+			console.log(err);
+		} else if (!created_event) {
+			res.redirect('/Events');
+		}	else {
+			
+			var group_ids = created_event.group_id
 
+			Group = mongoose.model('group');
+			Group.find({
+	    'uuid': { $in: group_ids }
+			}, function(err, groups){
+			    console.log(groups);
+
+			    res.render('groups', {
+						LinkInOrOut : linkinorout,
+						InOrOut : loginorout,
+						RegisterOrProfile : registerorprofile,
+						events: created_event,
+						groups: groups
+					});
+			});
+		}
+	});
 }
 
 function render_event(req, res, event_id) {
