@@ -97,14 +97,14 @@
 		 				<span>
 		 					{{groups.max_size}}
 		 				</span>
-		 				<span>
-		 					<a href = "/Events/{{id}}/groups/create">CREATE GROUP</a>
-		 				</span>
 		 			</div>
 	 				{{/groups}}
+					<span>
+	 					<a href = "/Events/{{event_id}}/groups/create">CREATE GROUP</a>
+	 				</span>
 	 			</div>
-	 		</span>
-	 		{{/events}}
+	 		</span>	 		
+ 			{{/events}}
 	 	</div>
 	</body>
 </html>
