@@ -89,13 +89,17 @@
 	 				<b>Keywords:</b> <span>{{tags}}</span>
 	 			</div>
 	 			<div>
-	 				<b>Groups:</b> {{#groups}}
+	 				<b>Groups:</b>
+	 				{{#groups}}
 	 				<div>
 		 				<span>
-		 					{{groups.name}}
-		 				</span>, 
+		 					Name: {{name}} -
+		 				</span> 
 		 				<span>
-		 					{{groups.max_size}}
+		 					Description: {{description}} - 
+		 				</span>
+		 				<span>
+		 					<a href="/Events/{{event_id}}//Groups/{{uuid}}">Link</a>
 		 				</span>
 		 			</div>
 	 				{{/groups}}

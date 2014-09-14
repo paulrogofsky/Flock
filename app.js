@@ -44,7 +44,14 @@ mongoose.model('event', {
   description: String,
   details: String,
   tags: [String],
-  group_id: [String],
+  groups: [ {
+    name : { type : String, required : true },
+    member_ids : { type : [String], required : true },
+    event_id : { type : String, required : true },
+    creator_id : { type : String, required : true },
+    description : { type : String, required : true },
+    uuid : { type : String, required : true }
+  } ],
   size: String, 
   uuid: String
 });

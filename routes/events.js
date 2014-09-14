@@ -93,6 +93,15 @@ router.post('/CreateGroup', function(req, res) {
 	var group_uuid = uuid.v4();
 	group.uuid = group_uuid;
 
+	save_group = {
+		name : group.name,
+		member_ids : group.member_ids,
+		event_id : group.event_id,
+		creator_id : group.creator_id,
+		description : group.description,
+		uuid : group.uuid
+	};
+
 	group.save(function (err, saved) {
 		if (err) {
 			console.log(err);
@@ -105,7 +114,7 @@ router.post('/CreateGroup', function(req, res) {
 
 			Event.findOneAndUpdate(
 		    { uuid : req.body.EventId},
-		    {$push: { group_id : group_uuid }},
+		    {$push: { groups : save_group }},
 		    function(err, person) {
 		       if (err) {
 		       	console.log(err)
@@ -147,21 +156,14 @@ function render_groups(req, res, event_id) {
 			res.redirect('/Events');
 		}	else {
 			console.log(created_event);
-			var group_ids = created_event.group_id
+			var groups = created_event.groups
 
-			Group = mongoose.model('group');
-			Group.find({
-	    'uuid': { $in: group_ids }
-			}, function(err, groups){
-			    console.log(groups);
-
-			    res.render('groups', {
-						LinkInOrOut : linkinorout,
-						InOrOut : loginorout,
-						RegisterOrProfile : registerorprofile,
-						events: created_event,
-						groups: groups
-					});
+	    res.render('groups', {
+				LinkInOrOut : linkinorout,
+				InOrOut : loginorout,
+				RegisterOrProfile : registerorprofile,
+				events: created_event,
+				groups: groups
 			});
 		}
 	});
@@ -203,7 +205,7 @@ function render_event(req, res, event_id) {
 				description : created_event.description,
 				details : created_event.details,
 				keywords : created_event.tags,
-				groups : created_event.group_id,
+				groups : created_event.groups,
 				event_id : event_id,
 				create_link : 'Events/' + event_id + '/Groups/Create'
 			});
@@ -228,12 +230,13 @@ function render_events(req, res) {
 
   var Event = mongoose.model('event');
   Event.find( { } , function (err, events) {
+  	var Group = mongoose.model('group');
   	res.render('Events', {
-  		LinkInOrOut : linkinorout,
-			InOrOut : loginorout,
-			RegisterOrProfile : registerorprofile,
-			events : events
-  	});
+	  		LinkInOrOut : linkinorout,
+				InOrOut : loginorout,
+				RegisterOrProfile : registerorprofile,
+				events : events
+  		});
   });
 }
 
