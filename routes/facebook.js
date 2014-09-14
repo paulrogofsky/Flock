@@ -63,7 +63,7 @@ router.get('/facebook', function(req, res) {
   		  				console.log('Error!');
   		  			}
   	  			});
-    			};
+    			}
     		});        
     	});
 
@@ -71,14 +71,6 @@ router.get('/facebook', function(req, res) {
       res.redirect('/');
     }
   });
-});
-
-// user gets sent here after being authorized
-router.get('/Home', function(req, res) {
-	graph.get('/me', function (err, data) {
-    req.session.
-	 	res.send("Hi " + data.first_name + " " + data.last_name);
-	});
 });
 
 function render(req, res, pagename) {

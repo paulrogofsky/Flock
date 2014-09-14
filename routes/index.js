@@ -32,7 +32,9 @@ router.get('/Navbar1', function(req, res){
 });
 
 router.get('/Logout', function(req, res) {
+	console.log(req.session.user);
 	req.session.user = null;
+	console.log(req.session.user);
 	res.redirect('/');
 })
 
@@ -109,7 +111,7 @@ router.post('/ConfirmRegister', function (req, res, next) {
 			req.session.user = user_id;
 		}
 	});
-	res.redirect('/Home');
+	res.redirect('/');
 });
 
 router.post('/RegisterAgain', function (req, res, next) {
@@ -141,7 +143,7 @@ function emailpin(pin, email, res)
 	      console.log(err);
 	    } else {
 	      console.log('Message sent successfully!');
-				res.render('ConfirmRegister', { Email : email });
+				res.render('ConfirmRegister', { Email : email, LinkInOrOut : 'Login', InOrOut : 'Log In', RegisterOrProfile : 'Register' });
 	    }
 	  });
 }
