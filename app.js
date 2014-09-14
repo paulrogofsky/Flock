@@ -21,25 +21,37 @@ var mongoose = require('mongoose');
 mongoose.connect('mongodb://admin:flockbro@ds035310.mongolab.com:35310/flockdb');
 
 mongoose.model('person', {
-    first_name: String,
-    last_name: String,
-    email: String,
-    pin: String,
-    password: String,
-    age: Number,
-    events_started: [Number],
-    events_joined: [Number],
-    facebook: Number
+  first_name: String,
+  last_name: String,
+  email: String,
+  pin: String,
+  password: String,
+  age: Number,
+  events_gone: [String],
+  events_going: [String],
+  facebook: String
 });
 
 mongoose.model('event', {
-    time_created: Date,
-    time_occurring: Date,
-    event_creator: String,
-    people_going: [String],
-    place: String,
-    group_size_limit: Number
-})
+  name: String,
+  date: Date,
+  start_time: String,
+  end_time: String,
+  location: String,
+  description: String,
+  details: String,
+  tags: [String],
+  group_id: [String]
+});
+
+mongoose.model('group', {
+  name: String,
+  member_ids: [String],
+  max_size: Number,
+  event_id: String,
+  creator_id: String,
+  description: String
+});
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
