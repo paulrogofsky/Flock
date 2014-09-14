@@ -54,6 +54,18 @@ router.post('/CreateEvent', function(req, res) {
 });
 
 router.post('/CreateGroup', function(req, res) {
+	var Group = mongoose.model('group');
+	var group = new Group();
+	group.name = req.body.GroupName;
+	group.member_ids = req.body.members;
+	group.max_size = req.body.max_size;
+	group.event_id = req.body.eventId;
+	group.creator_id = req.body.creator_id;
+	group.description = req.body.description;
+	group.uuid = uuid.v4();
+});
+
+router.post('/CreateGroup', function(req, res) {
 	
 });
 
@@ -95,7 +107,8 @@ function render_event(req, res, event_id) {
 				description : created_event.description,
 				details : created_event.details,
 				keywords : created_event.tags,
-				groups : created_event.groups
+				groups : created_event.groups,
+				create_link : 'Events/' + event_id + '/Groups/Create'
 			});
 		}
 	});
