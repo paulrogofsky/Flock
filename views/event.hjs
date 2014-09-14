@@ -91,10 +91,10 @@
  				<b>Groups:</b> {{#groups}}
  				<div>
 	 				<span>
-	 					{{groups.name}}
+	 					{{name}}
 	 				</span>, 
 	 				<span>
-	 					{{groups.max_size}}
+	 					{{max_size}}
 	 				</span>
 	 				<span>
 	 					<a href = "/Events/{{id}}/groups/create">CREATE GROUP</a>

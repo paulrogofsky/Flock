@@ -183,7 +183,7 @@ function render_event(req, res, event_id) {
 				description : created_event.description,
 				details : created_event.details,
 				keywords : created_event.tags,
-				groups : created_event.groups,
+				groups : created_event.group_id,
 				create_link : 'Events/' + event_id + '/Groups/Create'
 			});
 		}
