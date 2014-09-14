@@ -6,7 +6,6 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-		<script src="/javascripts/Toggle.js"></script>
 	    <script src="/javascripts/confirmpass.js"></script>
 	    <style>
 	    	form label {display:block;margin-left:15px;}
@@ -35,7 +34,7 @@
 	                <li><a href = "/Groups">Group Feed</a></li>
 	                <li><a href = "/Events">Event Feed</a></li>
 	                <li><a href = "/People">People Feed</a></li>
-	                <li><a href = "/{{InOrOut}}">{{InOrOut}}</a></li>
+	                <li><a href = '/{{LinkInOrOut}}' id = "LogInOut">{{InOrOut}}</a></li>
 	                <li><a href = "/{{RegisterOrProfile}}">{{RegisterOrProfile}}</a></li>
 	              </ul>
 	              <form class="navbar-form navbar-left" role="search">
