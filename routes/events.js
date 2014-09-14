@@ -8,6 +8,9 @@ router.get('/Events/:event_id/Groups', function(req, res) {
 });
 
 router.get('/Events/:event_id/Groups/Create', function(req, res) {
+	if (!req.session.user) {
+		res.redirect('/Login');
+	}
 	render_create_group(req, res, req.params.event_id);
 });
 
@@ -16,6 +19,9 @@ router.get('/Events/:event_id/Groups/:group_id', function(req, res) {
 });
 
 router.get('/Person/Edit', function(req, res) {
+	if (!req.session.user) {
+		res.redirect('/Login');
+	}
 	render(req, res, 'CreatePerson');
 });
 
@@ -24,10 +30,16 @@ router.get('/Find', function(req, res) {
 });
 
 router.get('/Create', function(req, res) {
+	if (!req.session.user) {
+		res.redirect('/Login');
+	}
 	render(req, res, 'Create');
 });
 
 router.get('/Events/Create',function(req, res) {
+	if (!req.session.user) {
+		res.redirect('/Login');
+	}
 	render(req, res, 'CreateEvent');
 });
 
@@ -184,6 +196,7 @@ function render_event(req, res, event_id) {
 				details : created_event.details,
 				keywords : created_event.tags,
 				groups : created_event.group_id,
+				event_id : event_id,
 				create_link : 'Events/' + event_id + '/Groups/Create'
 			});
 		}
