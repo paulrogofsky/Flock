@@ -158,18 +158,20 @@ function makeid()
 }
 
 function render(req, res, pagename) {
-	var id = req.session.user;
-	console.log(id);
-	var registerorprofile;
-	var loginorout;
-	if (id) {
-		registerorprofile = 'Profile';
-		loginorout = 'Log Out';
-	} else {
-		registerorprofile = 'Register';
-		loginorout = 'Log In';
-	}
-  res.render(pagename, { InOrOut : loginorout, RegisterOrProfile : registerorprofile });
+  var id = req.session.user;
+  var registerorprofile;
+  var loginorout;
+  var linkinorout;
+  if (id) {
+    registerorprofile = 'Profile';
+    loginorout = 'Log Out';
+    linkinorout = 'Logout';
+  } else {
+    registerorprofile = 'Register';
+    loginorout = 'Log In';
+    linkinorout = 'Login'
+  }
+  res.render(pagename, { LinkInOrOut : linkinorout, InOrOut : loginorout, RegisterOrProfile : registerorprofile });
 }
 
 function encrypt(text){
