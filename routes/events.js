@@ -11,7 +11,7 @@ router.get('/Person/Edit', function(req, res) {
 	render(req, res, 'CreatePerson');
 });
 
-router.get('/Events/Find', function(req, res) {
+router.get('/Find', function(req, res) {
 	render(req, res, 'Find');
 });
 

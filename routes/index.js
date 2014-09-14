@@ -35,6 +35,7 @@ router.get('/Logout', function(req, res) {
 	console.log(req.session.user);
 	req.session.user = null;
 	console.log(req.session.user);
+	req.session.alert = 'You have been signed out';
 	res.redirect('/Login');
 })
 
@@ -44,6 +45,7 @@ router.post('/Login', function (req, res, next) {
 		if (err) {
 			console.log('Could not update');
 		} else if (!user) {
+			req.session.alert = 'Sorry, that email is not correct.';
 			res.redirect('/Login');
 		}	else {
 			var encrypted = user.password;
@@ -53,6 +55,7 @@ router.post('/Login', function (req, res, next) {
 				req.session.user = user_id;
 				res.redirect('/')
 			} else {
+				req.session.alert = 'Sorry, that password was incorrect.';
 				res.redirect('/Login');
 			}
 		}
@@ -61,7 +64,7 @@ router.post('/Login', function (req, res, next) {
 
 router.post('/RegisterNow', function(req, res, next) {
   if (req.body.email === '' || req.body.FirstName === '' || req.body.LastName === '') {
-    console.log('You must provide an email address, first and last name.');
+    req.session.alert = 'You must provide an email address, first and last name.';
     res.redirect('/Register');
   } else {
 
@@ -89,6 +92,7 @@ router.post('/RegisterNow', function(req, res, next) {
 					console.log(user[0].pin);
 					emailpin(user[0].pin, req.body.email, res);
 				} else {
+					req.session.alert = 'Your email has already been registered.';
 					res.redirect('/Login');
 				}
 			}
@@ -113,6 +117,7 @@ router.post('/ConfirmRegister', function (req, res, next) {
 			});
 			req.session.user = user_id;
 		} else {
+			req.session.alert = 'That pin was incorrect. Please re-enter the pin from your email.';
 			console.log('That pin is incorrect' + user.pin + ' vs. ' + req.body.Pin);
 		}
 	});
@@ -124,8 +129,10 @@ router.post('/RegisterAgain', function (req, res, next) {
 	console.log(req.body.email);
 	Person.findOne({ email : req.body.email } , function(err, user) {
 		if (!user) {
+			req.session.alert = 'That email has never been sent a pin. Please register.';
 			res.redirect('/Register');
 		} else if (user.password) {
+			req.session.alert = 'Your email has already been registered.';
 			res.redirect('/Login');
 		} else {
 			console.log(user);
@@ -178,7 +185,10 @@ function render(req, res, pagename) {
     loginorout = 'Log In';
     linkinorout = 'Login'
   }
-  res.render(pagename, { LinkInOrOut : linkinorout, InOrOut : loginorout, RegisterOrProfile : registerorprofile });
+
+  var alert = req.session.alert;
+  req.session.alert = null;
+  res.render(pagename, { LinkInOrOut : linkinorout, InOrOut : loginorout, RegisterOrProfile : registerorprofile, alert : alert });
 }
 
 function encrypt(text){
