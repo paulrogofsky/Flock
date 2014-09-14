@@ -79,6 +79,21 @@ router.post('/CreateGroup', function(req, res) {
 			res.redirect('/');
 		} else {
 			console.log('Saved!');
+			var Event = mongoose.model('event');
+
+			console.log(group_uuid);
+
+			Event.findOneAndUpdate(
+		    { uuid : req.body.EventId},
+		    {$push: { group_id : group_uuid }},
+		    function(err, person) {
+		       if (err) {
+		       	console.log(err)
+		       } else {
+		       	console.log(person);
+		       }
+		    }
+			);
 			res.redirect('/Events/' + req.body.EventId + '/Group/' + group_uuid);
 		}
 	});
