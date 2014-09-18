@@ -1,6 +1,10 @@
 nav {font-size:16pt;}
 
-body {background-image:url('/images/congruent_outline.png');}
+body {background-image:url('/images/congruent_outline.png'); }
+
+.ContentPane {position:relative;min-height: 600px;
+height: auto !important;
+height: 600px;left:100px;margin-right:200px;font-family:"Trebuchet MS", Helvetica, sans-serif;margin-left:3px;color:white;font-size:16pt;background: rgba(255,0,0, 0.1);overflow:hidden;}
 
 #FLOCK {font-size:26pt;
 min-height: 57px;

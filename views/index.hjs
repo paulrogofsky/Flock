@@ -55,7 +55,8 @@
 	              </ul>
 	            </div><!-- /.navbar-collapse -->
 	          </div><!-- /.container-fluid -->
-	        </nav>
+	        </
+	        nav>
 	    </div>
 		<div class = "ContentPane">
 			<span id = "Title">

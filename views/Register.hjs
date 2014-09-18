@@ -60,7 +60,7 @@
 	          </div><!-- /.container-fluid -->
 	        </nav>
 	    </div>
- 		<div>
+ 		<div class = "ContentPane">
 	 		<h4>
 	 			REGISTRATION PAGE
 	 		</h4>
