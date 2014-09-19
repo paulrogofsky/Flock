@@ -6,11 +6,10 @@
 	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 	    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 	    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-	    <link rel="stylesheet" href = "/stylesheets/content.css">
 	    <link rel = "stylesheet" href="/stylesheets/events.css">
 	    <script type = "text/javascript">
 	    	function changeVisibility (elmt,eventId) {
-	    		if (document.getElementById('createGroup' + eventId).style.display == '') {
+	    		if (document.getElementByClassName('ff').style.display == '') {
 	    			document.getElementById('createGroup' + eventId).style.display = 'block';
 	    			elmt.checked = true;
 	    		}
@@ -43,13 +42,12 @@
 	                <li><a href="/Founders">Founders</a></li>
 	                <li><a href = "/Groups">Group Feed</a></li>
 	                <li  class="active"><a href = "/Events">Event Feed</a></li>
-	                <li><a href = "/People">People Feed</a></li>
 	                <li><a href = '/{{LinkInOrOut}}' id = "LogInOut">{{InOrOut}}</a></li>
 	                <li><a href = "/{{RegisterOrProfile}}">{{RegisterOrProfile}}</a></li>
 	              </ul>
 	              <form class="navbar-form navbar-left" role="search">
 	                <div class="form-group">
-	                  <input type="text" class="form-control" placeholder="Search">
+	                  <input type="text" class="form-control" placeholder="Search" id = "SearchTop">
 	                </div>
 	                <button type="submit" class="btn btn-default">Submit</button>
 	              </form>
@@ -71,7 +69,7 @@
 	          </div><!-- /.container-fluid -->
 	        </nav>
 	    </div>
-	    <div id = "EVENTS">
+	    <div id = "EVENTS" class = "ContentPane">
 	    	{{#events}}
 	 		<span class = "event">
 	 			<div class = "BIG">
@@ -102,6 +100,9 @@
 	 				<b>Keywords:</b> <span>{{tags}}</span>
 	 			</div>
 	 			<div>
+	 				<b>ID:</b> <span>{{event_id}}</span>
+	 			</div>
+	 			<div>
 	 				<b>Groups:</b>
 	 				{{#groups}}
 	 				<div>
@@ -118,25 +119,23 @@
 	 				{{/groups}}
 	 			</div>
 				<div>
- 					<form>
-						<input type="checkbox" name = "AddGroup" onclick="changeVisibility(this,{{event_id}});">Add Group</input>
+ 					<form class = "CreateGroup2" action = "/CreateGroup" method = 'post'>
+						<input type="checkbox" name = "AddGroup" onclick="changeVisibility(this);">Add Group</input>
+						<div class = "HIDE">
+							<input type = "hidden" name = "eventid" value = "{{event_id}}"></input>
+				 			<label for="GroupName">Group Name:</label>
+				 			<input type = "text" name = "GroupName"></input>
+				 			<input type = "hidden" name = "EventId" value = "{{event_id}}"></input>
+				 			<label for="max_size">What is the maximum size of this group? </label>
+				 			<input type = "text" name = "max_size"></input>
+				 			<label for = "members"> Member names (Please put commas between them):</label>
+				 			<input type = "text" name = "members"></input>
+				 			<label for = "description"> Description of Group: </label>
+				 			<input type = "text" name = "description" width = "100px" height = "200px"></input>
+			 	 			<input type = "submit" class = "btn"></input>
+			 	 		</div>
 					</form>
- 				</div>
-		 		<div id = "CreateGroup{{event_id}}" style = '{display:""}'>
-			 		<form class = "CreateGroup2" action = "/CreateGroup" method = 'post'>
-			 			<label for="GroupName">Group Name:</label>
-			 			<input type = "text" name = "GroupName"></input>
-			 			<input type = "hidden" name = "EventId" value = "{{event_id}}"></input>
-			 			<label for="max_size">What is the maximum size of this group? </label>
-			 			<input type = "text" name = "max_size"></input>
-			 			<label for = "members"> Member names (Please put commas between them):</label>
-			 			<input type = "text" name = "members"></input>
-			 			<label for = "description"> Description of Group: </label>
-			 			<input type = "text" name = "description" width = "100px" height = "200px"></input>
-		 	 			<input type = "submit" class = "btn"></input>
-		<!-- 	 			button adder here -->
-		 			</form> 				
-				</div>	
+ 				</div>				
  			</span>	
  			{{/events}}
 
