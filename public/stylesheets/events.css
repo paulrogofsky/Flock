@@ -11,4 +11,4 @@
 
 .event div span {font-size:16pt;}
 
-.HIDE {; position:relative; top:0px;overflow:visible;}
+.HIDE {display:none; position:relative; top:0px;overflow:visible;}
