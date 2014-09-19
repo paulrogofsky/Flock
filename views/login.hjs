@@ -29,7 +29,6 @@
 	                <li><a href="/Founders">Founders</a></li>
 	                <li><a href = "/Groups">Group Feed</a></li>
 	                <li><a href = "/Events">Event Feed</a></li>
-	                <li><a href = "/People">People Feed</a></li>
 	                <li class="active"><a href = '/{{LinkInOrOut}}' id = "LogInOut">{{InOrOut}}</a></li>
 	                <li><a href = "/{{RegisterOrProfile}}">{{RegisterOrProfile}}</a></li>
 	              </ul>
@@ -58,9 +57,11 @@
 	        </nav>
 	    </div>
  		<div class = "ContentPane">
-	  		<h4>
-	 			Login Page
-	 		</h4>
+ 			<div id = "Title">
+		  		<h4>
+		 			Login Page
+		 		</h4>
+		 	</div>
  			<div>
  				If you already have an account, you can login below.
  			</div>

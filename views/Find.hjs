@@ -7,7 +7,6 @@
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 	    <script src="/javascripts/confirmpass.js"></script>
-	    <link rel="stylesheet" href = "/stylesheets/content.css">
 	    <style>
 	    	form label {display:block;margin-left:15px;}
 	    	form input {display:block;margin-left:15px;margin-bottom:15px;}
@@ -37,7 +36,6 @@
 	                <li><a href="/Founders">Founders</a></li>
 	                <li><a href = "/Groups">Group Feed</a></li>
 	                <li><a href = "/Events">Event Feed</a></li>
-	                <li><a href = "/People">People Feed</a></li>
 	                <li><a href = '/{{LinkInOrOut}}' id = "LogInOut">{{InOrOut}}</a></li>
 	                <li><a href = "/{{RegisterOrProfile}}">{{RegisterOrProfile}}</a></li>
 	              </ul>

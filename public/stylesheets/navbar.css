@@ -6,6 +6,10 @@ body {background-image:url('/images/congruent_outline.png'); }
 height: auto !important;
 height: 600px;left:100px;margin-right:200px;font-family:"Trebuchet MS", Helvetica, sans-serif;margin-left:3px;color:white;font-size:16pt;background: rgba(255,0,0, 0.1);overflow:hidden;}
 
+form input {color:black;}
+
+form select option {color:black;}
+
 #FLOCK {font-size:26pt;
 min-height: 57px;
 }
@@ -15,3 +19,13 @@ min-height: 57px;
 #NavItems li a {padding-left:25px;padding-right:25px;}
 
 #FLOCK {position:relative;bottom:12px}
+
+#Title {text-align:center;}
+
+#Title h4 {font-size:28pt;font-family:"Trebuchet MS", Helvetica, sans-serif;}
+
+.ContentPane div div {font-size:16pt;text-indent:15px;}
+
+#AboutUs,#Useful {font-size:28pt;}
+
+#SearchTop{width:100px;}

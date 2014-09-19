@@ -29,7 +29,6 @@
                   <li><a href="/Founders">Founders</a></li>
                   <li><a href = "/Groups">Group Feed</a></li>
                   <li><a href = "/Events">Event Feed</a></li>
-                  <li  class="active"><a href = "/People">People Feed</a></li>
                   <li><a href = '/{{LinkInOrOut}}' id = "LogInOut">{{InOrOut}}</a></li>
                   <li><a href = "/{{RegisterOrProfile}}">{{RegisterOrProfile}}</a></li>
                 </ul>
