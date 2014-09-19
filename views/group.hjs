@@ -57,7 +57,7 @@
 	          </div><!-- /.container-fluid -->
 	        </nav>
 	    </div>
- 		<div class = "group">
+ 		<div class = "ContentPane">
  			<span>
  				Name: {{created_event.name}}
  			</span>
