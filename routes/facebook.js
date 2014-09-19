@@ -77,6 +77,8 @@ router.get('/facebook', function(req, res) {
     	});
 
       req.session.user = person_id;
+
+      req.session.facebook = true;
       
       var redirect = req.session.redirect;
       req.session.redirect = null;
@@ -95,7 +97,11 @@ function render(req, res, pagename) {
   var loginorout;
   var linkinorout;
   if (id) {
-    registerorprofile = 'Profile';
+    if (req.session.facebook) {
+      registerorprofile = "Profile";
+    } else {
+      registerorprofile = req.session.name;
+    }
     loginorout = 'Log Out';
     linkinorout = 'Logout';
   } else {

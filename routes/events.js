@@ -138,7 +138,11 @@ function render_group(req, res, event_id, group_id) {
   var loginorout;
   var linkinorout;
   if (id) {
-    registerorprofile = 'Profile';
+    if (req.session.facebook) {
+	    registerorprofile = "Profile";
+  	} else {
+  		registerorprofile = req.session.name;
+  	}
     loginorout = 'Log Out';
     linkinorout = 'Logout';
   } else {
@@ -152,17 +156,20 @@ function render_group(req, res, event_id, group_id) {
 		if (err) {
 			console.log(err);
 		} else if (!created_event) {
-			res.redirect('/Events/' + event_id);
+			res.redirect('/Events');
 		}	else {
 			console.log(created_event);
-			var groups = created_event.groups
 
 			var Group = mongoose.model('event');
 			Group.findOne( { uuid : group_id } , function (err, group) {
 				if (err) {
 					console.log(err);
 				} else {
-					console.log('NEW LINE : ' + group)
+					if (!group) {
+						console.log('There is no group');
+						res.redirect('/Events/' + event_id);
+					}
+
 					var Person = mongoose.model('person');
 					Person.findOne( { uuid : group.creator_id } , function (err, creator) {
 						Person.find ( { uuid : { $in: group.member_ids } }, function (err, members) {
@@ -190,7 +197,11 @@ function render_groups(req, res, event_id) {
   var loginorout;
   var linkinorout;
   if (id) {
-    registerorprofile = 'Profile';
+    if (req.session.facebook) {
+	    registerorprofile = "Profile";
+  	} else {
+  		registerorprofile = req.session.name;
+  	}
     loginorout = 'Log Out';
     linkinorout = 'Logout';
   } else {
@@ -208,7 +219,7 @@ function render_groups(req, res, event_id) {
 			res.redirect('/Events');
 		}	else {
 			console.log(created_event);
-			var groups = created_event.groups
+			var groups = created_event.groups;
 
 	    res.render('groups', {
 				LinkInOrOut : linkinorout,
@@ -227,7 +238,11 @@ function render_event(req, res, event_id) {
   var loginorout;
   var linkinorout;
   if (id) {
-    registerorprofile = 'Profile';
+    if (req.session.facebook) {
+	    registerorprofile = "Profile";
+  	} else {
+  		registerorprofile = req.session.name;
+  	}
     loginorout = 'Log Out';
     linkinorout = 'Logout';
   } else {
@@ -276,7 +291,11 @@ function render_events(req, res) {
   var loginorout;
   var linkinorout;
   if (id) {
-    registerorprofile = 'Profile';
+    if (req.session.facebook) {
+	    registerorprofile = "Profile";
+  	} else {
+  		registerorprofile = req.session.name;
+  	}
     loginorout = 'Log Out';
     linkinorout = 'Logout';
   } else {
@@ -309,7 +328,11 @@ function render_create_group(req, res, event_id) {
   var loginorout;
   var linkinorout;
   if (id) {
-    registerorprofile = 'Profile';
+    if (req.session.facebook) {
+	    registerorprofile = "Profile";
+  	} else {
+  		registerorprofile = req.session.name;
+  	}
     loginorout = 'Log Out';
     linkinorout = 'Logout';
   } else {
@@ -344,7 +367,11 @@ function render(req, res, pagename) {
   var loginorout;
   var linkinorout;
   if (id) {
-    registerorprofile = 'Profile';
+    if (req.session.facebook) {
+	    registerorprofile = "Profile";
+  	} else {
+  		registerorprofile = req.session.name;
+  	}
     loginorout = 'Log Out';
     linkinorout = 'Logout';
   } else {

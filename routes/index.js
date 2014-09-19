@@ -34,6 +34,8 @@ router.get('/Navbar1', function(req, res){
 router.get('/Logout', function(req, res) {
 	console.log(req.session.user);
 	req.session.user = null;
+	req.session.facebook = false;
+	req.session.name = null;
 	console.log(req.session.user);
 	req.session.alert = 'You have been signed out';
 	res.redirect('/Login');
@@ -53,6 +55,9 @@ router.post('/Login', function (req, res, next) {
 			if (req.body.password === decrypted) {
 				var user_id = user.uuid;
 				req.session.user = user_id;
+				req.session.facebook = false;
+				req.session.name = user.first_name + " " + user.last_name;
+
 
 				var redirect = req.session.redirect;
 				req.session.redirect = null;
@@ -184,7 +189,11 @@ function render(req, res, pagename) {
   var loginorout;
   var linkinorout;
   if (id) {
-    registerorprofile = 'Profile';
+  	if (req.session.facebook) {
+	    registerorprofile = "Profile";
+  	} else {
+  		registerorprofile = req.session.name;
+  	}
     loginorout = 'Log Out';
     linkinorout = 'Logout';
   } else {
