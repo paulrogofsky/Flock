@@ -19,6 +19,10 @@ router.get('/Register', function(req, res) {
 	render(req, res, 'Register');
 });
 
+router.get('/Founders',function(req,res) {
+	render(req,res,'Founders');
+});
+
 router.get('/Navbar', function(req, res){
 	render(req, res, 'navbar')
 });
