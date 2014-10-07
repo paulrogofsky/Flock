@@ -28,7 +28,9 @@
 	    	{{#events}}
 	 		<span class = "event">
 	 			<div class = "BIG">
-	 				<b class = "TRIG">{{name}}</b> 
+	 				<a href = "/Events/{{uuid}}">
+	 					<b class = "TRIG">{{name}}</b> 
+	 				</a>
 	 			</div>
 	 			<div>
 	 				<b>Location:</b> <span>{{location}}</span>
@@ -79,8 +81,6 @@
 				 			<input type = "text" name = "GroupName"></input>
 				 			<label for="max_size">What is the maximum size of this group? </label>
 				 			<input type = "text" name = "max_size"></input>
-				 			<label for = "members"> Member names (Please put commas between them):</label>
-				 			<input type = "text" name = "members"></input>
 				 			<label for = "description"> Description of Group: </label>
 				 			<input type = "text" name = "description" width = "100px" height = "200px"></input>
 			 	 			<input type = "submit" class = "btn"></input>
