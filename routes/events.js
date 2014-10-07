@@ -182,7 +182,8 @@ function render_group(req, res, event_id, group_id) {
 								group: group,
 								created_event : created_event,
 								creator : creator,
-								members: members
+								members: members,
+								partials : {part: 'navbar'}
 							});
 						})
 					});
@@ -227,7 +228,8 @@ function render_groups(req, res, event_id) {
 				InOrOut : loginorout,
 				RegisterOrProfile : registerorprofile,
 				events: created_event,
-				groups: groups
+				groups: groups,
+				partials : {part: 'navbar'}
 			});
 		}
 	});
@@ -275,6 +277,7 @@ function render_event(req, res, event_id) {
 				keywords : created_event.tags,
 				groups : created_event.groups,
 				event_id : event_id,
+				partials : {part: 'navbar'},
 				create_link : 'Events/' + event_id + '/Groups/Create'
 			}
 
@@ -313,6 +316,7 @@ function render_events(req, res) {
 				InOrOut : loginorout,
 				RegisterOrProfile : registerorprofile,
 				events : events,
+				partials : {part: 'navbar'}
   	}
 
   	if (req.session.user) {
@@ -356,7 +360,8 @@ function render_create_group(req, res, event_id) {
 				InOrOut : loginorout,
 				RegisterOrProfile : registerorprofile,
 				creator_id : user._id,
-				eventId : event_id
+				eventId : event_id,
+				partials : {part: 'navbar'}
   		});
   	}
   })
@@ -380,7 +385,7 @@ function render(req, res, pagename) {
     loginorout = 'Log In';
     linkinorout = 'Login'
   }
-  res.render(pagename, { LinkInOrOut : linkinorout, InOrOut : loginorout, RegisterOrProfile : registerorprofile });
+  res.render(pagename, { LinkInOrOut : linkinorout, InOrOut : loginorout, RegisterOrProfile : registerorprofile, partials : {part: 'navbar'} });
 }
 
 module.exports = router;
