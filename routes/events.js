@@ -95,7 +95,6 @@ router.post('/CreateGroup', function(req, res) {
 
 	save_group = {
 		name : group.name,
-		member_ids : group.member_ids,
 		event_id : group.event_id,
 		creator_id : group.creator_id,
 		description : group.description,

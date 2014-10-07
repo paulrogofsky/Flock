@@ -20,7 +20,16 @@ var server = app.listen(app.get('port'), function() {
 });
 
 var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
 mongoose.connect('mongodb://admin:flockbro@ds035310.mongolab.com:35310/flockdb');
+
+var groupSchema = new Schema({
+    name : String,
+    event_id : String,
+    creator_id : String,
+    description : String,
+    uuid : String
+  });
 
 mongoose.model('person', {
   first_name: String,
@@ -29,8 +38,8 @@ mongoose.model('person', {
   pin: String,
   password: String,
   age: Number,
-  events_gone: [String],
-  events_going: [String],
+  events_gone: [groupSchema],
+  events_going: [groupSchema],
   facebook: String,
   uuid: String
 });
