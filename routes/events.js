@@ -85,10 +85,10 @@ router.post('/CreateGroup', function(req, res) {
 	var Group = mongoose.model('group');
 	var group = new Group();
 	group.name = req.body.GroupName;
-	group.member_ids = req.body.members;
+	group.member_ids = req.body.members.replace(", ", " ").split(" ");
 	group.max_size = req.body.max_size;
-	group.event_id = req.body.EventId;
-	group.creator_id = req.body.creator_id;
+	group.event_id = req.body.eventid;
+	group.creator_id = req.session.user;
 	group.description = req.body.description;
 	var group_uuid = uuid.v4();
 	group.uuid = group_uuid;
@@ -105,6 +105,7 @@ router.post('/CreateGroup', function(req, res) {
 	group.save(function (err, saved) {
 		if (err) {
 			console.log(err);
+			req.session.alert = "Failed to save new group. Please try again.";
 			res.redirect('/');
 		} else {
 			console.log('Saved!');
@@ -113,7 +114,7 @@ router.post('/CreateGroup', function(req, res) {
 			console.log(group_uuid);
 
 			Event.findOneAndUpdate(
-		    { uuid : req.body.EventId},
+		    { uuid : req.body.eventid },
 		    {$push: { groups : save_group }},
 		    function(err, person) {
 		       if (err) {
@@ -123,7 +124,7 @@ router.post('/CreateGroup', function(req, res) {
 		       }
 		    }
 			);
-			res.redirect('/Events/' + req.body.EventId + '/Group/' + group_uuid);
+			res.redirect('/Events/' + req.body.eventid + '/Group/' + group_uuid);
 		}
 	});
 });
