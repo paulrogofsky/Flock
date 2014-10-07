@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var mongoose = require('mongoose');
 var uuid = require('node-uuid');
+var _ = require('underscore');
 
 router.get('/Events', function (req, res) {
 	render_events(req, res);
@@ -129,7 +130,7 @@ router.post('/CreateGroup', function(req, res) {
 			// Add group to person who created it
 			var Person = mongoose.model('person');
 			Person.findOneAndUpdate(
-				{	uuid : req.session.user },
+				{	uuid : req.session.user_id },
 				{ $push : { events_going : save_group }},
 				function(err, person) {
 					if (err) {
@@ -138,7 +139,7 @@ router.post('/CreateGroup', function(req, res) {
 						console.log(person)
 					}
 				}
-			)
+			);
 
 			res.redirect('/Events/' + req.body.eventid + '/Group/' + group_uuid);
 		}
@@ -147,6 +148,51 @@ router.post('/CreateGroup', function(req, res) {
 
 router.post('/PersonalProfile', function(req, res) {
 	
+});
+
+// When a user clicks join, we receive the event id and group id.
+// We want to add the member to the group, add the group to the member, and update the group in the event.
+router.post('/join', function(req, res) {
+	var Event = mongoose.model('event');
+	var Person = mongoose.model('person');
+	var Group = mongoose.model('group');
+	Event.findOne(
+	  { uuid : req.body.eventid },
+	  function(err, event_found) {
+	     if (err) {
+	     	console.log(err)
+	     } else {
+	     	console.log(event_found);
+	     	groups = event_found.groups;
+	     	save_group = _.find(groups, function(obj) { return obj.uuid == req.body.groupid });
+	     	console.log(save_group);
+	     	Person.findOneAndUpdate(
+					{	uuid : req.session.user },
+					{ $push : { events_going : save_group }},
+					function(err, person) {
+						if (err) {
+							console.log(err)
+						} else {
+							console.log(person)
+						}
+					}
+				);
+
+				Group.findOneAndUpdate(
+					{	uuid : req.body.groupid },
+					{ $push : { member_ids : req.session.user_id }},
+					function(err, person) {
+						if (err) {
+							console.log(err)
+						} else {
+							console.log(person)
+						}
+					}
+				);
+	     }
+	  }
+	);
+	res.redirect('/Events')
 });
 
 function render_group(req, res, event_id, group_id) {
@@ -177,32 +223,32 @@ function render_group(req, res, event_id, group_id) {
 		}	else {
 			console.log(created_event);
 
-			var Group = mongoose.model('event');
+			var Group = mongoose.model('group');
 			Group.findOne( { uuid : group_id } , function (err, group) {
 				if (err) {
 					console.log(err);
 				} else {
 					if (!group) {
-						console.log('There is no group');
+						console.log('There is no group with id ' + group_id);
 						res.redirect('/Events/' + event_id);
+					} else {
+						var Person = mongoose.model('person');
+						Person.findOne( { uuid : group.creator_id } , function (err, creator) {
+							Person.find ( { uuid : { $in: group.member_ids } }, function (err, members) {
+								res.render('group', {
+									LinkInOrOut : linkinorout,
+									InOrOut : loginorout,
+									RegisterOrProfile : registerorprofile,
+									events: created_event,
+									group: group,
+									created_event : created_event,
+									creator : creator,
+									members: members,
+									partials : {part: 'navbar'}
+								});
+							})
+						});
 					}
-
-					var Person = mongoose.model('person');
-					Person.findOne( { uuid : group.creator_id } , function (err, creator) {
-						Person.find ( { uuid : { $in: group.member_ids } }, function (err, members) {
-							res.render('group', {
-								LinkInOrOut : linkinorout,
-								InOrOut : loginorout,
-								RegisterOrProfile : registerorprofile,
-								events: created_event,
-								group: group,
-								created_event : created_event,
-								creator : creator,
-								members: members,
-								partials : {part: 'navbar'}
-							});
-						})
-					});
 				}
 			});
 		}

@@ -72,6 +72,7 @@
 		 			</div>
 		 			<div>
 		 				<form id = "joinGroup" action = "/join" method = 'post'>
+		 					<input type = "hidden" name = "eventid" value = "{{event_id}}"> </input>
 		 					<input type = "hidden" name = "groupid" value = "{{uuid}}"> </input>
 		 					<input type = "submit" name = "join" value = "Join"></input>
 		 				</form>
