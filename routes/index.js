@@ -208,7 +208,7 @@ function render(req, res, pagename) {
 
   var alert = req.session.alert;
   req.session.alert = null;
-  res.render(pagename, { LinkInOrOut : linkinorout, InOrOut : loginorout, RegisterOrProfile : registerorprofile, alert : alert });
+  res.render(pagename, { LinkInOrOut : linkinorout, InOrOut : loginorout, RegisterOrProfile : registerorprofile, alert : alert, partials : {part: 'navbar'} });
 }
 
 function encrypt(text){

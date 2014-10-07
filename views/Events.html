@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+ 	<head>
+ 		<title>Flock Event {{name}} </title>
+	    <link rel="stylesheet" href="/stylesheets/navbar.css">
+	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+	    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+	    <link rel = "stylesheet" href="/stylesheets/events.css">
+	    <script type = "text/javascript">
+	    	function changeVisibility (elmt) {
+	    		eventId = elmt.getAttribute('eid');
+	    		console.log('hidden' + eventId);
+	    		if (document.getElementById('hidden' + eventId).style.display == '') {
+	    			document.getElementById('hidden' + eventId).style.display = 'block';
+	    			elmt.checked = true;
+	    		}
+	    		else {
+	    			document.getElementById('hidden' + eventId).style.display = '';
+	    			elmt.checked = false;
+	    		}
+	    	}
+	    </script>
+ 	</head>
+ 	<body>
+ 		{{> part}}
+	    <div id = "EVENTS" class = "ContentPane">
+	    	{{#events}}
+	 		<span class = "event">
+	 			<div class = "BIG">
+	 				<b class = "TRIG">{{name}}</b> 
+	 			</div>
+	 			<div>
+	 				<b>Location:</b> <span>{{location}}</span>
+	 			</div>
+	 			<div>
+	 				<b>Date:</b> <span>{{date}}</span>
+	 			</div>
+	 			<div>
+	 				<b>Time Start:</b> <span>{{start_time}}</span>
+	 			</div>
+	 			<div>
+	 				<b>Time End:</b> <span>{{end_time}}</span>
+	 			</div>
+	 			<div>
+	 				<b>Max People:</b> <span>{{max_size}}</span>
+	 			</div>
+	 			<div>
+	 				<b>Description:</b> <span>{{description}}</span>
+	 			</div>
+	 			<div>
+	 				<b>Details:</b> <span>{{details}}</span>
+	 			</div>
+	 			<div>
+	 				<b>Keywords:</b> <span>{{tags}}</span>
+	 			</div>
+	 			<div>
+	 				<b>Groups:</b>
+	 				{{#groups}}
+	 				<div>
+		 				<span>
+		 					<b>Name:</b> {{name}} -
+		 				</span> 
+		 				<span>
+		 					<b>Description:</b> {{description}} - 
+		 				</span>
+		 				<span>
+		 					<a href="/Events/{{event_id}}/Groups/{{uuid}}">Link</a>
+		 				</span>
+		 			</div>
+	 				{{/groups}}
+	 			</div>
+				<div>
+ 					<form class = "CreateGroup2" action = "/CreateGroup" method = 'post'>
+						<input type="checkbox" name = "AddGroup" onclick="changeVisibility(this);" eid = "{{_id}}">Add Group</input>
+						<div id = "hidden{{_id}}" class = "HIDE">
+							<input type = "hidden" name = "eventid" value = "{{_id}}"></input>
+				 			<label for="GroupName">Group Name:</label>
+				 			<input type = "text" name = "GroupName"></input>
+				 			<label for="max_size">What is the maximum size of this group? </label>
+				 			<input type = "text" name = "max_size"></input>
+				 			<label for = "members"> Member names (Please put commas between them):</label>
+				 			<input type = "text" name = "members"></input>
+				 			<label for = "description"> Description of Group: </label>
+				 			<input type = "text" name = "description" width = "100px" height = "200px"></input>
+			 	 			<input type = "submit" class = "btn"></input>
+			 	 		</div>
+					</form>
+ 				</div>				
+ 			</span>	
+ 			{{/events}}
+
+	 	</div>
+	</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+ 	<head>
+ 		<title>Flock Groups for Event {{event.name}} </title>
+	    <link rel="stylesheet" href="/stylesheets/navbar.css">
+	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+	    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+	    <link rel="stylesheet" href = "/stylesheets/content.css">
+ 	</head>
+ 	<body>
+ 		{{ part}}
+ 		<div class = "ContentPane">
+ 			<div id = "EventProperties">
+	 			<div>
+	 				<b>Name:</b> {{events.name}}
+	 			</div>
+	 			<div>
+	 				<b>Location:</b> {{events.location}}
+	 			</div>
+	 			<div>
+	 				<b>Date:</b> {{events.date}}
+	 			</div>
+	 			<div>
+	 				<b>Time Start:</b> {{events.start_time}}
+	 			</div>
+	 			<div>
+	 				<b>Time End:</b> {{events.end_time}}
+	 			</div>
+ 			</div>
+ 			{{#groups}}
+ 			<div id = "group-{{groups.id}}">
+	 			<span>
+	 				Name: {{name}}
+	 			</span>
+	 			<span>
+	 				Location: {{location}}
+	 			</span>
+	 			<span>
+	 				Date: {{date}}
+	 			</span>
+	 			<span>
+	 				Time Start: {{start}}
+	 			</span>
+	 			<span>
+	 				Time End: {{end}}
+	 			</span>
+	 			<span>
+	 				Max People: {{gmax_size}}
+	 			</span>
+	 			<span>
+	 				Description: {{description}}
+	 			</span>
+	 			<span>
+	 				Details: {{details}}
+	 			</span>
+	 			<span>
+	 				Keywords: {{#keywords}}
+					<p>
+						{{keywords}}
+					</p>
+					{{/keywords}}
+	 			</span>
+	 			<span>
+	 				Contact Person: {{creator.name}}
+	 			</span>
+	 		</div>
+	 		{{/groups}}
+ 		</div>
+	</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+ 	<head>
+		<title>Flock Registration</title>
+	    <link rel="stylesheet" href="/stylesheets/navbar.css">
+	    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+	    <script src="/javascripts/confirmpass.js"></script>
+	    <style>
+	    	.Email > div {margin-top:50px;}
+	    </style>
+ 	</head>
+ 	<body>
+ 		{{> part}}
+ 		<div class = "ContentPane">
+ 			<div id = "Title">
+		 		<h4>
+		 			REGISTRATION PAGE
+		 		</h4>
+		 	</div>
+	 		<span id = "alert">
+		 	</span>
+	 		<div class = "Email">
+	 			<div id = "RegisterFirst">
+		 			<span>
+		 				<p>
+		 					If you would like to register with your email, please indicate below.
+		 				</p>
+		 				<p>
+		 					We will send you an email with a pin.
+		 				</p>
+		 			</span>
+			 		<form id = "Register1" action = "/RegisterNow" method = 'post' onsubmit = "return validateEmailNames(this);">
+			 			<label for="email">Email:</label>
+			 			<input type = "text" name = "email"></input>
+			 			<label for="FirstName">First Name:</label>
+			 			<input type = "text" name = "FirstName"></input>
+			 			<label for="LastName">Last Name:</label>
+			 			<input type = "text" name = "LastName"></input>
+			 			<input type = "submit" class = "btn"></input>
+			 		</form>
+			 	</div>
+			 	<div id = "RegisterSecond">
+			 		<span>
+			 			<p>
+			 				If you already registered and received an email with your pin, please enter your email below and we will redirect you to the confirmation page.
+			 			</p>
+			 		</span>
+			 		<form id = "Register2" action = "/RegisterAgain" method = 'post' onsubmit = "return validateEmail(this)">
+			 			<label for="email">Email:</label>
+			 			<input type = "text" name = "email"></input>
+			 			<input type = "submit" class = "btn"></input>
+			 		</form>		 	
+			 	</div>	
+		 	</div>
+		 </div>
+ 	</body>
+ </html>

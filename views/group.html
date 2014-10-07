@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+ 	<head>
+ 		<title>Flock Group {{created_event.name}} </title>
+	    <link rel="stylesheet" href="/stylesheets/navbar.css">
+	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+	    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+ 	</head>
+ 	<body>
+ 		{{> part}}
+ 		<div class = "ContentPane">
+ 			<span>
+ 				Name: {{created_event.name}}
+ 			</span>
+ 			<div>
+ 				<p>
+ 					Members: 
+ 				</p>
+ 				{{#members}}
+ 				<span>
+	 				{{first_name}} {{last_name}}
+	 			</span>
+ 				{{/members}}
+ 			</div>
+ 			<span>
+ 				Max Size: {{group.max_size}}
+ 			</span>
+ 			<span>
+ 				Event: {{created_event.name}}
+ 			</span>
+ 			<span>
+ 				Contact: {{creator.first_name}} {{creator.last_name}}
+ 			</span>
+ 			<span>
+ 				<b>
+ 					Description: 
+ 				<b>
+ 				{{group.description}}
+ 			</span>
+ 		</div>
+	</body>
+</html>
