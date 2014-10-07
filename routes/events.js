@@ -85,7 +85,7 @@ router.post('/CreateGroup', function(req, res) {
 	var Group = mongoose.model('group');
 	var group = new Group();
 	group.name = req.body.GroupName;
-	group.member_ids = req.body.members.replace(", ", " ").split(" ");
+	group.member_ids = [req.session.user]
 	group.max_size = req.body.max_size;
 	group.event_id = req.body.eventid;
 	group.creator_id = req.session.user;
@@ -102,6 +102,7 @@ router.post('/CreateGroup', function(req, res) {
 		uuid : group.uuid
 	};
 
+	// Save the group to the database
 	group.save(function (err, saved) {
 		if (err) {
 			console.log(err);
@@ -113,17 +114,33 @@ router.post('/CreateGroup', function(req, res) {
 
 			console.log(group_uuid);
 
+			// Update the event to contain the group
 			Event.findOneAndUpdate(
 		    { uuid : req.body.eventid },
-		    {$push: { groups : save_group }},
-		    function(err, person) {
+		    { $push : { groups : save_group }},
+		    function(err, event_found) {
 		       if (err) {
 		       	console.log(err)
 		       } else {
-		       	console.log(person);
+		       	console.log(event_found);
 		       }
 		    }
 			);
+
+			// Add group to person who created it
+			var Person = mongoose.model('person');
+			Person.findOneAndUpdate(
+				{	uuid : req.session.user },
+				{ $push : { events_going : save_group }},
+				function(err, person) {
+					if (err) {
+						console.log(err)
+					} else {
+						console.log(person)
+					}
+				}
+			)
+
 			res.redirect('/Events/' + req.body.eventid + '/Group/' + group_uuid);
 		}
 	});
