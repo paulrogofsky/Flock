@@ -21,6 +21,7 @@
     "facebook-node-sdk": "^0.2.0",
     "fbgraph": "^0.2.11",
     "hjs": "~0.0.6",
+    "hogan-express": "^0.5.2",
     "mongoose": "^3.8.16",
     "morgan": "~1.2.3",
     "node-uuid": "^1.4.1",

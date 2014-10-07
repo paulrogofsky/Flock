@@ -72,9 +72,9 @@
 	 			</div>
 				<div>
  					<form class = "CreateGroup2" action = "/CreateGroup" method = 'post'>
-						<input type="checkbox" name = "AddGroup" onclick="changeVisibility(this);" eid = "{{_id}}">Add Group</input>
-						<div id = "hidden{{_id}}" class = "HIDE">
-							<input type = "hidden" name = "eventid" value = "{{_id}}"></input>
+						<input type="checkbox" name = "AddGroup" onclick="changeVisibility(this);" eid = "{{uuid}}">Add Group</input>
+						<div id = "hidden{{uuid}}" class = "HIDE">
+							<input type = "hidden" name = "eventid" value = "{{uuid}}"></input>
 				 			<label for="GroupName">Group Name:</label>
 				 			<input type = "text" name = "GroupName"></input>
 				 			<label for="max_size">What is the maximum size of this group? </label>
