@@ -70,6 +70,12 @@
 		 					<a href="/Events/{{event_id}}/Groups/{{uuid}}">Link</a>
 		 				</span>
 		 			</div>
+		 			<div>
+		 				<form id = "joinGroup" action = "/join" method = 'post'>
+		 					<input type = "hidden" name = "groupid" value = "{{uuid}}"> </input>
+		 					<input type = "submit" name = "join" value = "Join"></input>
+		 				</form>
+		 			</div>
 	 				{{/groups}}
 	 			</div>
 				<div>
