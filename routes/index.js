@@ -8,32 +8,24 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res) {
-	render(req, res, 'index');
+	render(req, res, 'index',0);
 });
 
 router.get('/Login', function(req, res) {
-	render(req, res, 'login');
+	render(req, res, 'login',4);
 });
 
 router.get('/Register', function(req, res) {
-	render(req, res, 'Register');
+	render(req, res, 'Register',5);
 });
 
 router.get('/Founders',function(req,res) {
-	render(req,res,'Founders');
-});
-
-router.get('/Navbar', function(req, res){
-	render(req, res, 'navbar')
+	render(req,res,'Founders',1);
 });
 
 router.get('/Person', function(req, res) {
-	render(req, res, 'person');
+	render(req, res, 'person',2);
 })
-
-router.get('/Navbar1', function(req, res){
-	render(req, res, 'navbar1.hjs')
-});
 
 router.get('/Logout', function(req, res) {
 	console.log(req.session.user);
@@ -171,7 +163,7 @@ function emailpin(pin, email, res)
 	      console.log(err);
 	    } else {
 	      console.log('Message sent successfully!');
-				res.render('ConfirmRegister', { Email : email, LinkInOrOut : 'Login', InOrOut : 'Log In', RegisterOrProfile : 'Register' });
+				res.render('ConfirmRegister', { Email : email, LinkInOrOut : 'Login', InOrOut : 'Log In', RegisterOrProfile : 'Register',alert : alert, partials : {part: 'navbar'},type:5});
 	    }
 	  });
 }
@@ -187,7 +179,7 @@ function makeid()
     return text;
 }
 
-function render(req, res, pagename) {
+function render(req, res, pagename, typ) {
   var id = req.session.user;
   var registerorprofile;
   var loginorout;
@@ -208,7 +200,7 @@ function render(req, res, pagename) {
 
   var alert = req.session.alert;
   req.session.alert = null;
-  res.render(pagename, { LinkInOrOut : linkinorout, InOrOut : loginorout, RegisterOrProfile : registerorprofile, alert : alert, partials : {part: 'navbar'} });
+  res.render(pagename, {type: typ, LinkInOrOut : linkinorout, InOrOut : loginorout, RegisterOrProfile : registerorprofile, alert : alert, partials : {part: 'navbar'} });
 }
 
 function encrypt(text){
